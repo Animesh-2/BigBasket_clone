@@ -1,68 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #home{
-            display: flex;
-            /* border: 1px solid red; */
-            align-items: center;
+        * {
+            box-sizing: border-box;
         }
-        #boxModel{
 
-            background-color: hsl(0,0%,97%);
-            
+        #boxModel {
+            margin: 0 10%;
+            background-color: hsl(0, 0%, 97%);
+            width: auto;
+            /* border: 2px solid black; */
         }
-        #filter{
+
+        #home {
+            display: flex;
+            align-items: center;
+            margin: 0%;
+            /* border: 1px solid red; */
+            /* border: 2px solid blue; */
+            /* width:200px; */
+        }
+
+        #image-link {
+            display: block;
+            width: 40px;
+            height: auto;
+            text-decoration: none;
+            /* border: 2px solid red; */
+            /* Set the width to 100% of its container */
+            /* Remove underline styling for links */
+        }
+
+        #image-link img {
+            display: block;
+            width: 100%;
+            height: auto;
+            /* Set the width to 100% of its container */
+            /* Make the image a block-level element */
+            /* Automatically adjust the height to maintain aspect ratio */
+        }
+
+
+
+        #filter {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 200px;
             height: 60px;
-            font-size: x-large;
+            font-size: large;
             border-radius: 5px;
             gap: 8px;
         }
-        #filter:hover{
+
+        #filter:hover {
             background-color: grey;
             color: aliceblue;
         }
-        #filter>img{
 
-            width: 50px;
+        #fresh {
+            /* border: 2px solid green; */
+            width: 100%;
         }
-        
-            
+        #filter>img {
+            width: 40px;
+        }
 
+
+        #fresh>img {
+            width: 90%;
+        }
     </style>
 </head>
+
 <body>
 
     <div id="boxModel">
         <div id="home">
-
-            <a href=""><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAB2CAMAAAAqeZcjAAAAY1BMVEX///8AAACQkJBycnLExMXAwMBkZWWdnp709PQ9Pj4wMDCIiIni4uIFBwgVFhbIyMjq6uq1tbVJSkqkpKSsra1RUVGVlZZqamqCgoJDRETS0tIpKiocHR0iIiQ1NTVVVlZdXV3/H8vbAAACjklEQVRoge3a25KiMBAGYAMqUYggIIiOwvs/5aTDuo4QnJzdqu3/Ykoh+lU4JB2c1QqDwWAwGAwG8/+kyD6iXm8fcIs7IfsitEp3hLHgLldF7kFdoR43/M+OBlRLUFerY1BXqDW8ArcL5NITYaQaX9fcLcO4/VMFl4VxQU2ebyv+9hRcBZf4dweOJK+bArhbTjTTjQnf2PtUW5k6ukNw1bO7qI7u1o965l+dLu1s+M7Yj8rIeXl3ynd7cH9RFRqYRKEzHlxQ298axa5dJdW5m6reHuAuXuy6idRvyvjdTaavKhzhh+uovzAQtOoTOfQ3slfFsKdRPtA3Q6h6YDIdtIoWOvwseswCpVKvWypZu4YFWm/ngmpUfnf8g7W5yhc5Zh/dPQp4/RzNVegvMTvOdgsc2pn1VyznLJaRZi6ondXitTiNy8KwKnc7XTeHhZz1Qp1Cfzfq7S8E5uu6qhLNg/TMJqmqGsockuuojIlnE4Mp24qPi6+5KKt/wsxLbph3H1HqL00faS0qfT7tbv9+kd7dn9uxyid1kvUbluZ1EyXHxfMWa13Diux6eJy3Qyq/zzywdEt+Rjriu2fFYylSnqMmisUzQFnF5p6F2jDOxquT5gsjvnN2PXlowo/41/z8Omf76fr5LlsIuGYz3tnX25/PVvvZgOCaTeYPC66ErH2z2/kcmkouZscs1CrToekoeQrnmC2u8+uWT1mlb/aL7KfbsgO5T68px+yFzdniRm7TI+CalZTslB/46S9RIdg9OXhm84+xO2SRRRbZf4adPVm9LLBuZ6BdlbzmLGdZ9NqsKm1YRmZhUlbWzqK3ssxnoJu0nSmbpZEsybQdbWTN0o/87wsGg8FgMBgMxle+AQkcH3BVgVDHAAAAAElFTkSuQmCC" alt="Image"style="width: 30%; height: auto;">
+            <a id="image-link"><img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAB2CAMAAAAqeZcjAAAAY1BMVEX///8AAACQkJBycnLExMXAwMBkZWWdnp709PQ9Pj4wMDCIiIni4uIFBwgVFhbIyMjq6uq1tbVJSkqkpKSsra1RUVGVlZZqamqCgoJDRETS0tIpKiocHR0iIiQ1NTVVVlZdXV3/H8vbAAACjklEQVRoge3a25KiMBAGYAMqUYggIIiOwvs/5aTDuo4QnJzdqu3/Ykoh+lU4JB2c1QqDwWAwGAwG8/+kyD6iXm8fcIs7IfsitEp3hLHgLldF7kFdoR43/M+OBlRLUFerY1BXqDW8ArcL5NITYaQaX9fcLcO4/VMFl4VxQU2ebyv+9hRcBZf4dweOJK+bArhbTjTTjQnf2PtUW5k6ukNw1bO7qI7u1o965l+dLu1s+M7Yj8rIeXl3ynd7cH9RFRqYRKEzHlxQ298axa5dJdW5m6reHuAuXuy6idRvyvjdTaavKhzhh+uovzAQtOoTOfQ3slfFsKdRPtA3Q6h6YDIdtIoWOvwseswCpVKvWypZu4YFWm/ngmpUfnf8g7W5yhc5Zh/dPQp4/RzNVegvMTvOdgsc2pn1VyznLJaRZi6ondXitTiNy8KwKnc7XTeHhZz1Qp1Cfzfq7S8E5uu6qhLNg/TMJqmqGsockuuojIlnE4Mp24qPi6+5KKt/wsxLbph3H1HqL00faS0qfT7tbv9+kd7dn9uxyid1kvUbluZ1EyXHxfMWa13Diux6eJy3Qyq/zzywdEt+Rjriu2fFYylSnqMmisUzQFnF5p6F2jDOxquT5gsjvnN2PXlowo/41/z8Omf76fr5LlsIuGYz3tnX25/PVvvZgOCaTeYPC66ErH2z2/kcmkouZscs1CrToekoeQrnmC2u8+uWT1mlb/aL7KfbsgO5T68px+yFzdniRm7TI+CalZTslB/46S9RIdg9OXhm84+xO2SRRRbZf4adPVm9LLBuZ6BdlbzmLGdZ9NqsKm1YRmZhUlbWzqK3ssxnoJu0nSmbpZEsybQdbWTN0o/87wsGg8FgMBgMxle+AQkcH3BVgVDHAAAAAElFTkSuQmCC"
+                    alt="Image">
             </a>
-            <p>Home</p>
+            <span>Home</span>
         </div>
-        <img src="https://www.bigbasket.com/media/uploads/flatpages/test-1/Fruits%20&%20vegetables.jpg" alt="Image">
-        
-        <p style="font-size: xx-large; color:#8f8962;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Fruits & Vegetables </p>
 
-        
+        <div id="fresh">
+
+            <img src="https://www.bigbasket.com/media/uploads/flatpages/test-1/Fruits%20&%20vegetables.jpg" alt="Image">
+        </div>
+
+
+        <p
+            style="font-size: xx-large; color:#8f8962;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+            'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+            Fruits & Vegetables </p>
+
+
         <button id="filter">
-            <img src="data:image/png;base64,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" alt="">Hide Filter
+            <img src="data:image/png;base64,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"
+                alt="">Hide Filter
         </button>
-        
+
 
     </div>
-    
+
 
 </body>
+
 </html>
 <script>
 
-    var filter= document.getElementById("#filter")
+    var filter = document.getElementById("#filter")
 </script>
