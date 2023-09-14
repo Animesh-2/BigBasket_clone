@@ -6,21 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
+        /* *{
+        } */
+        
         #boxModel {
-            margin: 0 10%;
+            box-sizing: border-box;
+            margin-left: 10px;
+            margin-right: 10px;
             background-color: hsl(0, 0%, 97%);
             width: auto;
+            overflow: hidden;
             /* border: 2px solid black; */
         }
 
         #home {
             display: flex;
             align-items: center;
-            margin: 0%;
+            margin: 0;
+            box-sizing: border-box;
             /* border: 1px solid red; */
             /* border: 2px solid blue; */
             /* width:200px; */
@@ -37,8 +40,8 @@
         }
 
         #image-link img {
-            display: block;
-            width: 100%;
+            /* display: block; */
+            max-width: 100%;
             height: auto;
             /* Set the width to 100% of its container */
             /* Make the image a block-level element */
@@ -49,10 +52,9 @@
             display: flex;
             justify-content: space-between;
             padding: 0px 0px 25px
-            
         }
 
-        .filter-buttons {
+        .filter-button1,.filter-button2 {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -64,67 +66,133 @@
             gap: 8px;
         }
 
-        .filter-buttons:hover {
+        .filter-button1:hover {
+            background-color: rgb(104, 104, 104);
+            color: aliceblue;
+        }
+        .filter-button2:hover {
             background-color: rgb(104, 104, 104);
             color: aliceblue;
         }
 
-        #fresh {
-            /* border: 2px solid green; */
-            width: 100%;
+        p {
+
+            font-size: xx-large;
+            color: #8f8962;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
-        .filter-buttons>img {
+
+        #fresh {
+            width: 75%;
+            /* border: 2px solid green; */
+        }
+
+        .filter-button>img {
             width: 40px;
         }
 
 
         #fresh>img {
-            width: 90%;
+            max-width: 100%;
+            height: auto;
+            padding-top: 20px;
         }
+
+        #products {
+
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            padding: 30px;
+            gap: 20px;
+            /* border: 1px solid rebeccapurple; */
+        }
+
+        #products>div {
+
+            font-size: x-large;
+            text-align: center;
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+            border-radius: 20px;
+            padding: 10px;
+            /* border: 1px solid red; */
+        }
+        #products> div> button{
+
+            width: 500px;
+            height: 50px;
+            font-size: large;
+            border-radius: 15px;
+            background-color: #8f8962;
+        }
+        #products> div> button:hover{
+
+            background-color: red;
+            color: white;
+        }
+        
     </style>
+
+    <script src="https://kit.fontawesome.com/8f738ffcbd.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <div id="boxModel">
         <div id="home">
-            <a id="image-link">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAB2CAMAAAAqeZcjAAAAY1BMVEX///8AAACQkJBycnLExMXAwMBkZWWdnp709PQ9Pj4wMDCIiIni4uIFBwgVFhbIyMjq6uq1tbVJSkqkpKSsra1RUVGVlZZqamqCgoJDRETS0tIpKiocHR0iIiQ1NTVVVlZdXV3/H8vbAAACjklEQVRoge3a25KiMBAGYAMqUYggIIiOwvs/5aTDuo4QnJzdqu3/Ykoh+lU4JB2c1QqDwWAwGAwG8/+kyD6iXm8fcIs7IfsitEp3hLHgLldF7kFdoR43/M+OBlRLUFerY1BXqDW8ArcL5NITYaQaX9fcLcO4/VMFl4VxQU2ebyv+9hRcBZf4dweOJK+bArhbTjTTjQnf2PtUW5k6ukNw1bO7qI7u1o965l+dLu1s+M7Yj8rIeXl3ynd7cH9RFRqYRKEzHlxQ298axa5dJdW5m6reHuAuXuy6idRvyvjdTaavKhzhh+uovzAQtOoTOfQ3slfFsKdRPtA3Q6h6YDIdtIoWOvwseswCpVKvWypZu4YFWm/ngmpUfnf8g7W5yhc5Zh/dPQp4/RzNVegvMTvOdgsc2pn1VyznLJaRZi6ondXitTiNy8KwKnc7XTeHhZz1Qp1Cfzfq7S8E5uu6qhLNg/TMJqmqGsockuuojIlnE4Mp24qPi6+5KKt/wsxLbph3H1HqL00faS0qfT7tbv9+kd7dn9uxyid1kvUbluZ1EyXHxfMWa13Diux6eJy3Qyq/zzywdEt+Rjriu2fFYylSnqMmisUzQFnF5p6F2jDOxquT5gsjvnN2PXlowo/41/z8Omf76fr5LlsIuGYz3tnX25/PVvvZgOCaTeYPC66ErH2z2/kcmkouZscs1CrToekoeQrnmC2u8+uWT1mlb/aL7KfbsgO5T68px+yFzdniRm7TI+CalZTslB/46S9RIdg9OXhm84+xO2SRRRbZf4adPVm9LLBuZ6BdlbzmLGdZ9NqsKm1YRmZhUlbWzqK3ssxnoJu0nSmbpZEsybQdbWTN0o/87wsGg8FgMBgMxle+AQkcH3BVgVDHAAAAAElFTkSuQmCC" alt="Image">
+            <a id="image-link" href="#">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAB2CAMAAAAqeZcjAAAAY1BMVEX///8AAACQkJBycnLExMXAwMBkZWWdnp709PQ9Pj4wMDCIiIni4uIFBwgVFhbIyMjq6uq1tbVJSkqkpKSsra1RUVGVlZZqamqCgoJDRETS0tIpKiocHR0iIiQ1NTVVVlZdXV3/H8vbAAACjklEQVRoge3a25KiMBAGYAMqUYggIIiOwvs/5aTDuo4QnJzdqu3/Ykoh+lU4JB2c1QqDwWAwGAwG8/+kyD6iXm8fcIs7IfsitEp3hLHgLldF7kFdoR43/M+OBlRLUFerY1BXqDW8ArcL5NITYaQaX9fcLcO4/VMFl4VxQU2ebyv+9hRcBZf4dweOJK+bArhbTjTTjQnf2PtUW5k6ukNw1bO7qI7u1o965l+dLu1s+M7Yj8rIeXl3ynd7cH9RFRqYRKEzHlxQ298axa5dJdW5m6reHuAuXuy6idRvyvjdTaavKhzhh+uovzAQtOoTOfQ3slfFsKdRPtA3Q6h6YDIdtIoWOvwseswCpVKvWypZu4YFWm/ngmpUfnf8g7W5yhc5Zh/dPQp4/RzNVegvMTvOdgsc2pn1VyznLJaRZi6ondXitTiNy8KwKnc7XTeHhZz1Qp1Cfzfq7S8E5uu6qhLNg/TMJqmqGsockuuojIlnE4Mp24qPi6+5KKt/wsxLbph3H1HqL00faS0qfT7tbv9+kd7dn9uxyid1kvUbluZ1EyXHxfMWa13Diux6eJy3Qyq/zzywdEt+Rjriu2fFYylSnqMmisUzQFnF5p6F2jDOxquT5gsjvnN2PXlowo/41/z8Omf76fr5LlsIuGYz3tnX25/PVvvZgOCaTeYPC66ErH2z2/kcmkouZscs1CrToekoeQrnmC2u8+uWT1mlb/aL7KfbsgO5T68px+yFzdniRm7TI+CalZTslB/46S9RIdg9OXhm84+xO2SRRRbZf4adPVm9LLBuZ6BdlbzmLGdZ9NqsKm1YRmZhUlbWzqK3ssxnoJu0nSmbpZEsybQdbWTN0o/87wsGg8FgMBgMxle+AQkcH3BVgVDHAAAAAElFTkSuQmCC"
+                    alt="Image">
             </a>
             <span>Home</span>
         </div>
 
-        <div id="fresh">
-
-            <img src="https://www.bigbasket.com/media/uploads/flatpages/test-1/Fruits%20&%20vegetables.jpg" alt="Image">
+        <div id="body2">
+            <div id="image_slider">
+                <img src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2753-l1-bev-c-Fresho-Tender-Coconut-1200x300-25-08-23.jpg?tr=w-1700,q=80"
+                    class="mySlides">
+                <img src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2702-l1-bev-c-Emperia-Tea-Common-1200x300-25-08-23.jpg?tr=w-1700,q=80"
+                    class="mySlides">
+                <img src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2472-L1-bev-c-Fresho-Cold-Pressed-Juices-1200x300-25-08-23-all.jpg?tr=w-1700,q=80"
+                    class="mySlides">
+                <img src="https://www.bigbasket.com/media/uploads/banner_images/L2-YXPL154-1200x300-25thmar.jpg?tr=w-1700,q=80"
+                    class="mySlides">
+            </div>
         </div>
 
+        <div id="fresh">
 
-        <p style="font-size: xx-large; color:#8f8962;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-            'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-            Fruits & Vegetables </p>
+            <img src="https://www.bigbasket.com/media/uploads/flatpages/test-1/Beverages.jpg" alt="Image">
+
+            <p> Beverages </p>
+        </div>
+
 
 
         <div id="button-container">
 
-            <button class="filter-buttons">
-                <img src="data:image/png;base64,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"
-                    alt="">Hide Filter
+            <button class="filter-button1">
+                
+                Hide Filter <i class="fa-sharp fa-solid fa-eye-slash"></i>
             </button>
 
-            <button class="filter-buttons"> Relevance 
-                <img src="https://th.bing.com/th?q=Filter+Sort+Icon&w=120&h=120&c=1&rs=1&qlt=90&cb=1&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" alt="Image">
+            <button class="filter-button2"> 
+                <i class="fa-solid fa-sort"></i> Relevance
+                
             </button>
 
         </div>
-        <!-- thematic break --><hr>
+
+        
+        <!-- thematic break -->
+        <hr>
 
         <div id="products">
-
         </div>
 
     </div>
+
 
 
 </body>
@@ -135,12 +203,12 @@
         {
             name: "Tea 1kg",
             price: "305",
-            img: "https://www.bigbasket.com/media/uploads/p/m/240067_18-tea.jpg",
+            img: "https://www.bigbasket.com/media/uploads/p/m/20005452_3-organic-india-organic-tulsi-green-tea-pomegranate-stress-relieving.jpg",
         },
         {
             name: "Pepsi Black",
             price: "135",
-            img: "https://www.bigbasket.com/media/uploads/p/m/1200615_1-black-soft-drink-max-taste-zero-caldiet.jpg",
+            img: "https://www.bigbasket.com/media/uploads/p/m/1200615_2-pepsi-black-soft-drink-max-taste-zero-caldiet.jpg",
         },
         {
             name: "Coconut Water",
@@ -154,11 +222,11 @@
         },
         {
             name: "Coca Cola",
-            price: "156",
-            img: "https://www.bigbasket.com/media/uploads/p/m/1200130_7-diet-coke-soft-drink.jpg",
+            price: "140",
+            img: "https://www.bigbasket.com/media/uploads/p/m/40203850_2-coca-cola-soft-drink.jpg",
         },
         {
-            name: "Thums Up (12 x 750ml)",
+            name: "Thums Up (6 x 500ml)",
             price: "350",
             img: "https://www.bigbasket.com/media/uploads/p/m/1212259_1-soft-drink.jpg",
         },
@@ -168,9 +236,9 @@
             img: "https://www.bigbasket.com/media/uploads/p/m/1203608_1-mineral-water.jpg",
         },
         {
-            name: "Bourn Vita (2 x 750gm)",
-            price: "525",
-            img: "https://www.bigbasket.com/media/uploads/p/m/1204514_2-pro-health-drink-chocolate.jpg",
+            name: "Red Label",
+            price: "55",
+            img: "https://www.bigbasket.com/media/uploads/p/m/266616_16-red-label-tea.jpg?tr=w-300,q=80",
         },
         {
             name: "Sparkling Water",
@@ -178,30 +246,75 @@
             img: "https://www.bigbasket.com/media/uploads/p/m/265680_11-sparkling-water-club-soda.jpg",
         },
         {
-            name: "Maaza",
-            price: "95",
-            img: "https://www.bigbasket.com/media/uploads/p/m/1208189_1-juice-mango-refresh.jpg",
+            name: "Mirinda",
+            price: "20",
+            img: "https://www.bigbasket.com/media/uploads/p/m/40216378_1-mirinda-orange-soft-drink.jpg"
         },
         {
             name: "Real Juice (3 x 1L)",
-            price: "305",
-            img: "https://www.bigbasket.com/media/uploads/p/m/1209770_2-100-apple-juice-with-no-added-sugar-and-preservative.jpg",
+            price: "399",
+            img: "https://www.bigbasket.com/media/uploads/p/m/40294761_1-fresho-signature-valencia-orange-juice-cold-pressed.jpg?",
         },
         {
             name: "Bru Gold Instant Coffee",
-            price: "261",
-            img: "https://www.bigbasket.com/media/uploads/p/m/290185_13-gold-instant-coffee-100-pure-authentic-taste.jpg",
+            price: "490",
+            img: "https://www.bigbasket.com/media/uploads/p/m/40275722_3-bru-gold-premium-freeze-dried-coffee-100-pure-strong-intense-aromatic.jpg",
         },
 
     ];
 
-    var parent= document.querySelector("#products");
+    var parent = document.querySelector("#products");
 
-    function showProducts(data){
+    function showProducts(data) {
 
-        var div= document.createElement("div")
+        data.forEach(product => {
 
+            var div = document.createElement("div");
+
+            var img = document.createElement("img");
+            img.src = product.img;
+
+            var name = document.createElement("h6");
+            name.innerText = product.name;
+
+            var price = document.createElement("h3");
+            price.textContent = "₹" + product.price;
+
+            var add_to_cart = document.createElement("button");
+            add_to_cart.innerText = "Add";
+
+            add_to_cart.onclick = function () {
+                add_to_cart(product);
+            }
+
+            div.append(img, name, price, add_to_cart);
+
+            parent.append(div);
+
+        });
+    }
+
+    showProducts(data);
+
+</script>
+
+<!-- for carousel made on screen -->
+<script>
+    var slideIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > x.length) { slideIndex = 1 }
+        x[slideIndex - 1].style.display = "block";
+        setTimeout(carousel, 3000);
     }
     
 </script>
+
 </html>
