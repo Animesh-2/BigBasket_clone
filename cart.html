@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-container{
+            width:85%;
+            margin:auto;
+        }
+        .cart-page{
+            margin: 80px auto;
+        }
+        table {
+            width:100%;
+            border-collapse:collapse;
+        }
+        .cart-info{
+            display:flex;
+            flex-wrap:wrap;
+        }
+        .small-container{
+            display:flex;
+            justify-content:space-evenly;
+        }
+        th{
+            text-align:left;
+            padding:5px;
+            color:grey;
+            font-weight:bold;
+        }
+
+        td img{
+            length: 80px;
+            width:80px;
+            margin-right:10px;
+        }
+
+        td{
+            padding:10px 5px;
+        }
+        td input{
+            width:50px;
+            height:15px;
+            padding:5px;
+
+        }
+        td a{
+            color:#ff523b;
+            font-size:12px;
+        }
+        .total-container{
+            display:flex;
+            justify-content:space-between;
+            width:100%;
+            height:60px;
+            border:2px solid black;
+            border-radius: 10px;
+            background-color: rgb(32, 31, 31);
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            
+        }
+
+        .total-container p{
+            color:white;
+            padding-left: 15px;
+
+        }
+
+        .total-container button{
+            width:150px;
+            height:30px;
+            margin:auto 15px;
+            color:white;
+            background-color: #ff523b;
+            border-radius: 5px;
+        }
+        .cart-info div{
+            margin-left:30px;
+        }
+        tr{
+            border-bottom:1px solid rgb(232, 223, 223);
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="main-container">
+        <h2>Your Basket</h2>
+        <div class="total-container">
+            <p>Subtotal(1 item):₹69</p>
+            <button>Checkout</button>
+        </div>
+        
+        <div class="small-container">
+            <table>
+                <tr>
+                    <th>Items</th>
+                    <th>Quantity</th>
+                    <th>Sub-total</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="cart-info">
+                            <img src="https://www.bigbasket.com/media/uploads/p/m/10000027_28-fresho-banana-robusta.jpg?tr=w-1920,q=80" alt="">
+                            <div>
+                                <p>Banana-Robusta</p>
+                                <small><b>₹69</b></small>
+            
+                            </div>
+                        </div>
+                        
+                    </td>
+                    <td><input type = "number" value="1"</td>
+                    <td>₹39.99</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="cart-info">
+                            <img src="https://www.bigbasket.com/media/uploads/p/m/40263290_2-beyond-snack-kerala-banana-chips-peri-peri-flavour-thin-crispy-zero-cholesterol.jpg?tr=w-1920,q=80" alt="">
+                            <div>
+                                <p>Kerala Banana Chips</p>
+                                <small><b>₹30</b></small>
+            
+                            </div>
+                        </div>
+                        
+                    </td>
+                    <td><input type = "number" value="1"</td>
+                    <td>₹30</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>
