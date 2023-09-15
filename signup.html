@@ -163,7 +163,7 @@
                          <div id="input">
                             <input id="username" type="text" placeholder="Username">
                             <input type="email" id="email" placeholder="Email">
-                            <input type="password" placeholder="Password">
+                            <input type="password" id="password" placeholder="Password">
                         
                             <button id="submit" onclick="continuefun()" >Continue</button>
                             <span>Already have an account? <a href="login.html" class="loginform">Login</a></span>
@@ -185,14 +185,44 @@ function closeform(){
     let btn = document.getElementById("parent")
     btn.style.display="none" 
 }
-   
-
+   var userarr= [];
     function continuefun(){
     // window.location.href="otp.html";
-    window.location.href="login.html";
-    var username= document.querySelector("#username").value;    
-    localStorage.setItem("username", JSON.stringify(username))
+   
+    var username= document.querySelector("#username").value; 
+    var email=document.querySelector("#email").value 
+    var password= document.querySelector("#password").value
 
+    if (!username || !email || !password) {
+        return alert("you need to fill up all the details");
+    }
+
+    var userdata={
+        username, email, password
+    } 
+
+    var userdata_str= JSON.stringify(userdata)
+
+
+     //get to localstorage if there is existing user ||or make empty array[]
+     var userarr = JSON.parse(localStorage.getItem('users')) || [];
+    
+     // search the list if
+     var userExists = userarr.find(user => JSON.stringify(user) === userdata_str);
+    if (userExists) {
+        return alert("User already Exists");
+    }
+
+    //push new user to array
+    userarr.push(userdata);
+
+
+
+    localStorage.setItem("users", JSON.stringify(userarr));
+    return alert("Account Created!")
+
+
+    window.location.href="login.html";
     }
 
 </script>

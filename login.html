@@ -161,7 +161,7 @@
                         <h2>Login</h2>
                         <!-- <p class="otppara">Using OTP</p> -->
                          <div id="input">
-                            <input id="username" type="text" placeholder="Username">
+                            <input id="username" type="text" placeholder="UsernameOrEmail">
                             <input type="password" placeholder="Password">
                         
                             <button id="submit" onclick="continuefun()" >Continue</button>
@@ -181,12 +181,20 @@ function closeform()
     let btn = document.getElementById("parent")
     btn.style.display="none" 
 }
-   
+  
+    var data= JSON.parse(localStorage.getItem("users"))
+
     function continuefun()
     {
-    window.location.href="otp.html";
+
+
+    
     var username= document.querySelector("#username").value;    
     localStorage.setItem("username", JSON.stringify(username)) 
+
+
+    window.location.href="home.html";
+
     }
 
 </script>
