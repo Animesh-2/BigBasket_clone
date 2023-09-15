@@ -161,6 +161,7 @@
                         <p class="otppara">Using OTP</p>
                          <div id="input">
                             <input id="username" type="text" placeholder="Enter Phone number/Email">
+                            <!-- <input type="password" name="" id=""> -->
                             <button id="submit" onclick="continuefun()" >Continue</button>
                         </div>
                         
@@ -186,6 +187,7 @@ function closeform(){
     window.location.href="otp.html";
     var username= document.querySelector("#username").value;    
     localStorage.setItem("username", JSON.stringify(username))
+    
     }
 
 </script>

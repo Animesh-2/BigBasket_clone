@@ -23,17 +23,26 @@
   </head>
   <body>
     <div>
-      <form id="otpForm">
+      <form id="otpForm" onsubmit="return false">
         <h2>Enter OTP</h2>
         <input type="number" placeholder="OTP" required id="otp" />
-        <input type="submit" onclick="otpsubmited()" />
+        <button type="submit" onclick="otpsubmited()">submit</button>
       </form>
     </div>
   </body>
   <script>
 
     function otpsubmited(){
-        alert("OTP Verified")
+     var b= document.getElementById("otp").value
+     console.log(b)
+    if(b==="1234"){
+         var a= alert("OTP Verified")
+        window.location.href="home.html"
+      }
+      else{
+        alert("Invalid OTP, Enter correct OTP")
+      }
+
     }
   </script>
 </html>
