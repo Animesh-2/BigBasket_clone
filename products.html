@@ -6,27 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* *{
-        } */
-        
-        #boxModel {
+        * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
-            margin-left: 10px;
-            margin-right: 10px;
-            background-color: hsl(0, 0%, 97%);
-            width: auto;
+        }
+
+        #boxModel {
+            margin-left: 100px;
+            margin-right: 100px;
             overflow: hidden;
-            /* border: 2px solid black; */
+            background-color: hsl(0, 0%, 97%);
         }
 
         #home {
             display: flex;
             align-items: center;
-            margin: 0;
-            box-sizing: border-box;
-            /* border: 1px solid red; */
-            /* border: 2px solid blue; */
-            /* width:200px; */
+
         }
 
         #image-link {
@@ -34,27 +30,27 @@
             width: 40px;
             height: auto;
             text-decoration: none;
-            /* border: 2px solid red; */
-            /* Set the width to 100% of its container */
-            /* Remove underline styling for links */
         }
 
         #image-link img {
-            /* display: block; */
-            max-width: 100%;
+            width: 100%;
             height: auto;
-            /* Set the width to 100% of its container */
-            /* Make the image a block-level element */
-            /* Automatically adjust the height to maintain aspect ratio */
+
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
         }
 
         #button-container {
             display: flex;
             justify-content: space-between;
-            padding: 0px 0px 25px
+            padding: 0 0 25px
         }
 
-        .filter-button1,.filter-button2 {
+        .filter-button1,
+        .filter-button2 {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -64,12 +60,14 @@
             font-family: monospace;
             border-radius: 5px;
             gap: 8px;
+            background-color: #79b0c5;
         }
 
         .filter-button1:hover {
             background-color: rgb(104, 104, 104);
             color: aliceblue;
         }
+
         .filter-button2:hover {
             background-color: rgb(104, 104, 104);
             color: aliceblue;
@@ -77,35 +75,74 @@
 
         p {
 
-            font-size: xx-large;
+            font-size: 300%;
             color: #8f8962;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-
-
-        #fresh {
-            width: 75%;
-            /* border: 2px solid green; */
+            padding: 10px 0;
         }
 
         .filter-button>img {
             width: 40px;
         }
 
+        /* Style for the dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style for the button inside the dropdown container */
+        .filter-button2 {
+            background-color: #79b0c5;
+            color: black;
+            padding: 10px 20px;
+            border: black;
+            cursor: pointer;
+        }
+
+        /* Style for the dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+
+        }
+
+        /* Style for the buttons inside the dropdown */
+        .dropdown-content button {
+            width: 100%;
+            padding: 10px;
+            text-align: left;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: x-large;
+        }
+
+        /* Change color of dropdown content on hover */
+        .dropdown-content button:hover {
+            background-color: #ddd;
+        }
+
+        /* Show the dropdown content when the button is hovered over */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
 
         #fresh>img {
-            max-width: 100%;
-            height: auto;
+            width: 70%;
+            /* height: auto; */
             padding-top: 20px;
         }
 
         #products {
 
             display: grid;
-            grid-template-columns: repeat(3,1fr);
+            grid-template-columns: repeat(3, 1fr);
             padding: 30px;
             gap: 20px;
-            /* border: 1px solid rebeccapurple; */
         }
 
         #products>div {
@@ -116,29 +153,31 @@
             box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
             border-radius: 20px;
             padding: 10px;
-            /* border: 1px solid red; */
         }
-        #products> div> button{
 
-            width: 500px;
+        #products>div>button {
+
+            width: 100%;
             height: 50px;
             font-size: large;
             border-radius: 15px;
             background-color: #8f8962;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
-        #products> div> button:hover{
+
+        #products>div>button:hover {
 
             background-color: red;
             color: white;
         }
-        
     </style>
 
     <script src="https://kit.fontawesome.com/8f738ffcbd.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
     <div id="boxModel">
         <div id="home">
             <a id="image-link" href="#">
@@ -150,14 +189,18 @@
 
         <div id="body2">
             <div id="image_slider">
-                <img src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2753-l1-bev-c-Fresho-Tender-Coconut-1200x300-25-08-23.jpg?tr=w-1700,q=80"
-                    class="mySlides">
-                <img src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2702-l1-bev-c-Emperia-Tea-Common-1200x300-25-08-23.jpg?tr=w-1700,q=80"
-                    class="mySlides">
-                <img src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2472-L1-bev-c-Fresho-Cold-Pressed-Juices-1200x300-25-08-23-all.jpg?tr=w-1700,q=80"
-                    class="mySlides">
-                <img src="https://www.bigbasket.com/media/uploads/banner_images/L2-YXPL154-1200x300-25thmar.jpg?tr=w-1700,q=80"
-                    class="mySlides">
+                <img class="mySlides"
+                    src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2753-l1-bev-c-Fresho-Tender-Coconut-1200x300-25-08-23.jpg?tr=w-1700,q=80">
+
+                <img class="mySlides"
+                    src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2702-l1-bev-c-Emperia-Tea-Common-1200x300-25-08-23.jpg?tr=w-1700,q=80">
+
+                <img class="mySlides"
+                    src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2472-L1-bev-c-Fresho-Cold-Pressed-Juices-1200x300-25-08-23-all.jpg?tr=w-1700,q=80">
+
+                <img class="mySlides"
+                    src="https://www.bigbasket.com/media/uploads/banner_images/L2-YXPL154-1200x300-25thmar.jpg?tr=w-1700,q=80">
+
             </div>
         </div>
 
@@ -168,32 +211,36 @@
             <p> Beverages </p>
         </div>
 
-
-
         <div id="button-container">
 
             <button class="filter-button1">
-                
+
                 Hide Filter <i class="fa-sharp fa-solid fa-eye-slash"></i>
             </button>
 
-            <button class="filter-button2"> 
-                <i class="fa-solid fa-sort"></i> Relevance
-                
-            </button>
+            <div class="dropdown">
+                <button class="filter-button2">
+                    <i class="fa-solid fa-sort"></i> Sort
+                </button>
+                <div class="dropdown-content" id="relevance-dropdown">
+                    <button id="ascending">Price- Low To High </button>
+                    <button id="descending">Price- High To Low </button>
+
+                    <button id="increasing"> <i class="fa-solid fa-arrow-down-a-z"></i> </button>
+                    <button id="decreasing"> <i class="fa-solid fa-arrow-up-a-z"></i> </button>
+                </div>
+            </div>
 
         </div>
 
-        
         <!-- thematic break -->
         <hr>
 
         <div id="products">
         </div>
-
+        
     </div>
-
-
+    
 
 </body>
 
@@ -284,7 +331,7 @@
             add_to_cart.innerText = "Add";
 
             add_to_cart.onclick = function () {
-                add_to_cart(product);
+                addToCart(product);
             }
 
             div.append(img, name, price, add_to_cart);
@@ -295,6 +342,44 @@
     }
 
     showProducts(data);
+
+    var cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function addToCart(product) {
+
+        cart.push(product)
+
+        localStorage.setItem("cart", JSON.stringify(cart))
+        console.log(cart);
+    }
+
+    document.getElementById("ascending").addEventListener("click", function () {
+        // products array in ascending order
+        data.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        parent.innerHTML = "";
+        showProducts(data);
+    });
+
+    document.getElementById("descending").addEventListener("click", function () {
+        // products array in descending order 
+        data.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        parent.innerHTML = "";
+        showProducts(data);
+    });
+
+    document.getElementById("increasing").addEventListener("click", function () {
+
+        data.sort((a, b) => a.name.localeCompare(b.name));
+        parent.innerHTML = "";
+        showProducts(data);
+    })
+
+    document.getElementById("decreasing").addEventListener("click", function () {
+
+        data.sort((a, b) => b.name.localeCompare(a.name));
+        parent.innerHTML = "";
+        showProducts(data);
+    })
 
 </script>
 
@@ -312,9 +397,9 @@
         slideIndex++;
         if (slideIndex > x.length) { slideIndex = 1 }
         x[slideIndex - 1].style.display = "block";
-        setTimeout(carousel, 3000);
+        setTimeout(carousel, 1500);
     }
-    
+
 </script>
 
 </html>
