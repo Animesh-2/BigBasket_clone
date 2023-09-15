@@ -15,7 +15,7 @@
 
         #parent{
             margin-top: 50%;
-            display: none;
+            display: flex;
             justify-content: center;
             justify-items: center;
             margin: auto;
@@ -125,6 +125,7 @@
        h2{
         text-align: left;
         margin-bottom: 2px;
+        /* text-decoration: underline; */
        }
 
 
@@ -132,7 +133,7 @@
 </head>
 <body>
 
-    <button id="enterform" onclick="openform()">login</button>
+    <!-- <button id="enterform" onclick="openform()">login</button> -->
 
     <div id="parent">
             
@@ -143,7 +144,6 @@
             <div><img src="https://dummyimage.com/150x150/000/fff" alt=""></div>
             <div><img src="https://dummyimage.com/150x150/000/fff" alt=""></div>
             <div><img src="https://dummyimage.com/150x150/000/fff" alt=""></div>
-          
            </div>
            <hr>
            <div id="lowerPart">Find us on
@@ -158,15 +158,14 @@
         <div id="right">
             <button type="button" onclick="closeform()" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
                 <div id="form">
-                        <h2>Signup</h2>
+                        <h2>Login</h2>
                         <!-- <p class="otppara">Using OTP</p> -->
                          <div id="input">
                             <input id="username" type="text" placeholder="Username">
-                            <input type="email" id="email" placeholder="Email">
                             <input type="password" placeholder="Password">
                         
                             <button id="submit" onclick="continuefun()" >Continue</button>
-                            <span>Already have an account? <a href="login.html" class="loginform">Login</a></span>
+                            <span>Don't have an account? <a href="signup.html" class="signupform">Signup</a></span>
                         </div>
                         
                         <P>By continiuing , I accept TCP - bigbasket's Terms <br> and Conditions & Privacy Policy</P>
@@ -176,23 +175,18 @@
 </body>
 <script>
 
-function openform(){
-    let btn = document.getElementById("parent")
-        btn.style.display="flex" 
-}
 
-function closeform(){
+function closeform()
+{
     let btn = document.getElementById("parent")
     btn.style.display="none" 
 }
    
-
-    function continuefun(){
-    // window.location.href="otp.html";
-    window.location.href="login.html";
+    function continuefun()
+    {
+    window.location.href="otp.html";
     var username= document.querySelector("#username").value;    
-    localStorage.setItem("username", JSON.stringify(username))
-
+    localStorage.setItem("username", JSON.stringify(username)) 
     }
 
 </script>
