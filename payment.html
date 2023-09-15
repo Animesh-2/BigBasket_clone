@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding:0;
+        margin:0;
+        box-sizing:border-box;
+        font-family: sans-serif;
+    }
+
+    header{
+        width:100vw;
+        min-height:100vh;
+        background:#34495e;
+        font-size: 1.2rem;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container{
+        background:white;
+        max-width:800px;
+        min-height:500px;
+        display:flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .left{
+        flex-basis:50%;
+    }
+
+    .right{
+        flex-basis: 50%;
+    }
+
+    form{
+        padding: 1rem;
+    }
+
+    h3{
+        margin-top: 1rem;
+        padding-left:10px;
+        color:#2c3e50;
+    }
+
+    form input[type="text"]{
+        width:100%;
+        padding:0.5rem 0.7rem;
+        margin:0.5rem 0;
+        outline:none;
+    }
+
+    #zip{
+        display:flex;
+        margin-top: 0.5rem;
+    }
+    #zip select{
+        padding:0.5rem 0.7rem;
+    }
+
+    #zip input[type="number"]{
+        padding:0.5rem 0.7rem;
+        margin-left:5px;
+    }
+     input[type="submit"]{
+        width:95%;
+        padding:0.7rem 1.5rem;
+        
+        background:#34495e;
+        color:white;
+        outline:none;
+        margin-top:1rem;
+        cursor:pointer;
+        border:none;
+     }
+
+     input[type="submit"]:hover{
+        background: #2c3e50;
+     }
+</style>
+<body>
+    <header>
+        <div class="container">
+            <div class="left">
+                <h3>BILLING ADDRESS</h3>
+                <form action="">
+                    Full Name
+                    <input type="text" name="" placeholder="Enter name">
+                    Email
+                    <input type="text" name="" placeholder="Enter email">
+                    Address
+                    <input type="text" name="" placeholder="Enter address">
+                    city
+                    <input type="text" name="" placeholder="Enter name">
+                    <div id="zip">
+                        <label>
+                            State 
+                            <select>
+                                <option >Delhi</option>
+                                <option >Bangalore</option>
+                                <option >Mumbai</option>
+                                <option >Hyderabad</option>
+                                <option >Uttar Pradesh</option>
+                                <option >Chennai</option>
+                            </select>
+                        </label>
+                        <label >
+                            Zip Code 
+                            <input type="number" name="" placeholder="Zip code">
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="right">
+                <h3>PAYMENT</h3>
+                <form action="">
+                    Accepted Cards <br>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Old_Visa_Logo.svg/2560px-Old_Visa_Logo.svg.png" width="50">
+                    <img src="https://w7.pngwing.com/pngs/92/785/png-transparent-mastercard-logo-mastercard-credit-card-payment-visa-nyse-ma-mastercard-logo-text-logo-sign.png" width="50">
+                    <img src="https://static.vecteezy.com/system/resources/previews/009/384/393/original/credit-card-clipart-design-illustration-free-png.png" width="50">
+                    <br>
+
+                    Card Number
+                    <input type="text" name="" placeholder="Enter card number">
+                    Exp month
+                    <input type="text" name="" placeholder="Enter address">
+                    city
+                    <input type="text" name="" placeholder="Enter month">
+                    <div id="zip">
+                        <label>
+                            Exp year 
+                            <select>
+                                <option >Choose Year..</option>
+                                <option >2023</option>
+                                <option >2024</option>
+                                <option >2025</option>
+                                <option >2026</option>
+                                <option >2027</option>
+                            </select>
+                        </label>
+                        <label >
+                            CVV
+                            <input type="number" name="" placeholder="cvv">
+                        </label>
+                    </div>
+                </form>
+                <input type="submit" name="" value="Proceed to checkout">
+            </div>
+        </div>
+    </header>
+</body>
+</html>
