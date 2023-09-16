@@ -60,7 +60,8 @@
             font-family: monospace;
             border-radius: 5px;
             gap: 8px;
-            background-color: #79b0c5;
+
+            border: 1px solid hsl(0,0%,70%)
         }
 
         .filter-button1:hover {
@@ -80,10 +81,6 @@
             padding: 10px 0;
         }
 
-        .filter-button>img {
-            width: 40px;
-        }
-
         /* Style for the dropdown container */
         .dropdown {
             position: relative;
@@ -92,10 +89,10 @@
 
         /* Style for the button inside the dropdown container */
         .filter-button2 {
-            background-color: #79b0c5;
+            background-color: #f1f1f1;
             color: black;
             padding: 10px 20px;
-            border: black;
+            border: 1px solid hsl(0,0%,70%);
             cursor: pointer;
         }
 
@@ -140,10 +137,48 @@
         #products {
 
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             padding: 30px;
             gap: 20px;
+
         }
+
+        @media all and (max-width:1600px) {
+
+            #products {
+
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                padding: 30px;
+                gap: 20px;
+
+            }
+        }
+
+        @media all and (max-width:1300px) {
+
+            #products {
+
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                padding: 30px;
+                gap: 20px;
+
+            }
+        }
+
+        @media all and (max-width:900px) {
+
+            #products {
+
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                padding: 30px;
+                gap: 20px;
+
+            }
+        }
+
 
         #products>div {
 
@@ -153,7 +188,31 @@
             box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
             border-radius: 20px;
             padding: 10px;
+            height: fit-content;
+
         }
+        .original-price {
+            
+            color: #888;
+        }
+        /* CSS for the price container */
+        .price-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Align elements vertically in the container */
+        }
+
+        /* CSS for the original price (mPrice) */
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+            margin-left: 10px;
+            /* Add some spacing between price and mPrice */
+        }
+
+        /* Rest of your CSS remains the same */
+
 
         #products>div>button {
 
@@ -213,14 +272,14 @@
 
         <div id="button-container">
 
-            <button class="filter-button1">
+            <button class="filter-button1" onclick="searchProducts()">
 
                 Hide Filter <i class="fa-sharp fa-solid fa-eye-slash"></i>
             </button>
 
             <div class="dropdown">
                 <button class="filter-button2">
-                    <i class="fa-solid fa-sort"></i> Sort
+                    <i class="fa-solid fa-sort"></i> Relevance
                 </button>
                 <div class="dropdown-content" id="relevance-dropdown">
                     <button id="ascending">Price- Low To High </button>
@@ -238,9 +297,9 @@
 
         <div id="products">
         </div>
-        
+
     </div>
-    
+
 
 </body>
 
@@ -249,12 +308,14 @@
     let data = [
         {
             name: "Tea 1kg",
-            price: "305",
+            price: "305.45",
+            mPrice: "354",
             img: "https://www.bigbasket.com/media/uploads/p/m/20005452_3-organic-india-organic-tulsi-green-tea-pomegranate-stress-relieving.jpg",
         },
         {
             name: "Pepsi Black",
             price: "135",
+            mPrice: "151",
             img: "https://www.bigbasket.com/media/uploads/p/m/1200615_2-pepsi-black-soft-drink-max-taste-zero-caldiet.jpg",
         },
         {
@@ -275,6 +336,7 @@
         {
             name: "Thums Up (6 x 500ml)",
             price: "350",
+            mPrice: "151",
             img: "https://www.bigbasket.com/media/uploads/p/m/1212259_1-soft-drink.jpg",
         },
         {
@@ -308,6 +370,17 @@
             img: "https://www.bigbasket.com/media/uploads/p/m/40275722_3-bru-gold-premium-freeze-dried-coffee-100-pure-strong-intense-aromatic.jpg",
         },
 
+        {
+            name: "ALPHA 8 Pineapple ",
+            price: "30",
+            img: "https://www.bigbasket.com/media/uploads/p/m/40260993_1-alpha-8-pineapple-with-goodness-of-nata-de-coco-naturally-twisted.jpg"
+        },
+        {
+            name: "Gourmet Coffee With Turmeric",
+            price: "448",
+            img: "https://www.bigbasket.com/media/uploads/p/m/40279113_2-auric-gourmet-coffee-with-turmeric-anti-ageing-instant-focus.jpg"
+        },
+
     ];
 
     var parent = document.querySelector("#products");
@@ -324,8 +397,12 @@
             var name = document.createElement("h6");
             name.innerText = product.name;
 
+            var priceContainer = document.createElement("div");
+            priceContainer.classList.add("price-container");
+
             var price = document.createElement("h3");
             price.textContent = "₹" + product.price;
+            priceContainer.append(price);
 
             var add_to_cart = document.createElement("button");
             add_to_cart.innerText = "Add";
@@ -334,10 +411,16 @@
                 addToCart(product);
             }
 
-            div.append(img, name, price, add_to_cart);
+            if (product.mPrice !== undefined) {
+                var mPrice = document.createElement("s");
+                mPrice.classList.add("original-price");
+                mPrice.textContent = "₹" + product.mPrice;
+                priceContainer.append(mPrice);
+            }
+
+            div.append(img, name, priceContainer, add_to_cart);
 
             parent.append(div);
-
         });
     }
 
@@ -385,21 +468,23 @@
 
 <!-- for carousel made on screen -->
 <script>
+
     var slideIndex = 0;
-    carousel();
 
     function carousel() {
-        var i;
+
         var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
+        for (var i = 0; i < x.length; i++) {
+
             x[i].style.display = "none";
         }
+
         slideIndex++;
         if (slideIndex > x.length) { slideIndex = 1 }
         x[slideIndex - 1].style.display = "block";
         setTimeout(carousel, 1500);
     }
-
+    carousel();
 </script>
 
 </html>
