@@ -14,51 +14,36 @@
             margin-top:50px;
 
         }
-        #products {
-            margin: 1% 5% 10% 5%;
-            display: grid;
-            grid-template-columns: 80%;
-            grid-gap: 1%;
-            justify-content: center;
-        }
 
-        #products div {
-            box-shadow: rgba(34, 33, 33, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, var(--bg-opacity));
-            height: 100px;
-        }
+        
 
         #products div img {
             height: 80px;
             width:80px;
-            margin-left: 2%;
-            margin-top: 1%;
+            margin-left: 50px;
             border: 1px solid gainsboro;
             border-radius: 10px;
-            float: left;
+           
         }
 
         #products div p {
             font-size: large;
-            /* margin-top: 10%; */
+           
 
         }
 
-        .productPri {
-            position: relative;
-            bottom:40px;
-            right:5px;
-            margin-left: 90%;
-            font-weight: bolder;
-            /* border:1px solid black; */
+         .productPri {
+             text-align:left;
+             width:130px;
         }
 
         .productNam {
-            color:black;
-            margin-left: 25%;
-            margin-top: 4%;
-        }
+            
+            width:100px;
+            margin-left:20px;
+
+
+        } 
 
         #checkout {
             box-shadow: rgb(96 96 96/ 16%) 4px 4px 4px 4px;
@@ -78,16 +63,12 @@
 
         }
 
-        #cos {
-            margin-left: 1%;
-            font-weight: bolder;
-            font-size: larger;
-        }
+       
 
         .ckbutton {
             position:absolute;
             right:170px;
-            top:350px;
+            top:150px;
             width: 200px;
             height: 40px;
             background-color: red;
@@ -95,200 +76,89 @@
             border-radius: 5px;
             border:none;
 
-            /* border: 1px solid green; */
+           
         }
   
-        #checkout input {
-            margin-top: 1%;
-            margin-left: 1%;
-        }
+        
 
         #prodN {
-            margin: 2% 15% 0% 15%;
-            height: 24px;
-            width: 70%;
-            font-size: larger;
-            font-weight: bold;
             display:flex;
-            justify-content: space-between;
-            margin-bottom:50px;
-            /* border:2px solid black; */
+            justify-content: space-around;
+            width:80%;
+            margin:auto;
+            font-size:larger;
 
         }
 
         .leftPrice {
-            margin-right: 5%;
+           
+            margin-right:-40px;
+            font-weight: bolder;
+
         }
 
-        .rightName{
-            margin-left:22%;
+         .rightName{
+
+            
+            margin-left:5px;
+            width:150px;
+            margin-left:-70px;
+            font-weight: bolder;
+        } 
+
+        .qty{
+            font-weight: bolder;
+
+
         }
 
-        /* Navbar CSS Styling */
-        #heading{
-        width: 100%;
-        height: 200px;
-        /* border: 2px solid red; */
-        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-        }
-        #heading img{
-            width: 210px;
-            margin-left: 7%;
-            height: 90px;
-            margin-top: 1%;
-        }
-        #heading_main1{
-            width: 90%;
-            height: 30px;
-            display: flex;
-            flex-direction: row-reverse;
-        }
-        #heading_main1 p{
-            color: #b2b2b2;
-            font-size: 1.2rem;
-            margin-top: -110px;
-            margin-right: 20px;    
-        }
-        #login{
-            margin-top: 2px;
-            background-color:maroon;
-            height: 30px;
-            padding-top: 3px;
-        }
-        #login:hover{
-            color: chartreuse;
-        }
-        #heading_main2{
-            margin-left: 25%;
-            margin-top: -70px;
-            display: flex;
-        }
-        #search_bar{
-            width: 600px;
-            height: 35px;
-            padding: 5px;
-            font-size: 1.2rem;
-        }
-        #heading_main2 img{
-            width: 42px;
-            height: 36px;
-            margin-left: -1px;
-            margin-top: -1px;
-            opacity: 0.8;
-        }
-        #heading_main2 img:hover{
-            opacity: 1;
-        }
-        .mySlides{
-            display: none;
-            width: 100%;
-        }
-        #my_basket{
-            background-color:rgb(255, 49, 49);
-            width: 200px;
-            padding: 2px;
-            display: flex;
-            font-size: 1.1rem;
-            font-family: verdana;
-            margin-left: 20%;
-            margin-top: -2%;
-        }
-        #my_basket img{
-            width: 60px;
-            height: 60px;  
-            margin-right: 20px;
-        }
+        #cartElements{
+            display:flex;
+            justify-content: space-evenly;
+            width:80%;
+            margin:auto;
+            height:100px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            margin-top:5px;
+            
         
-        #dropdown_list{
-            width: 15%;
-            height: 18%;
-            background-color: #84c225;
-            padding-top: 5px;
-            margin-left: 120px;
-            border-radius: 3px;
-            padding-left: 5px;
         }
-        #dropdown_list a{
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
+
+        #inc{
+            width:30px;
+            height:15px;
+            padding:5px;
+            margin:auto;
+            /* border:1px solid red; */
+            
         }
-        #drop1{
-            display: none;
-            background-color: white;
+
+
+        #remove{
+            /* border:1px solid red; */
+            margin-left:30px;
+            margin-right: 20px;
+            height:100%;
+            cursor: pointer;
+            
         }
-        #dropdown_list:hover #drop1{
-            display: block;
-            position: absolute;
-            margin-top: 0px;
-            margin-left: -2px;
-        }
-        #dropdown_list:hover #drop1 a{
-            display: block;
-            color: black;
-            border-bottom: 1px solid black;
-            border-left: 1px solid black;
-            border-right: 1px solid black;
-            padding: 5px;
-        }
-        #dropdown_list:hover #drop1 a:first-child{
-            border-top: 1px solid black;
-        }
-        #drop1 a:hover{
-            background-color: lightgray;
-        }
+
+
+        
+        
 
 
     </style>
 </head>
 
 <body>
-    <div id="heading">
-        <img src="Images/bigbasket_logo.png">
-        <div id="heading_main1">
-            <p id="login">Login|Sign Up</p>
-            <!-- <p>📍56004, Bangalore</p>
-            <p>📞1860 123 1000</p> -->
-        </div>
-        <div id="heading_main2">
-            <input type="search" id="search_bar" placeholder="Search for Products..">
-            <img id="search_img" src="Images/Search_image.png">
-            <a href="cart.html" id="lnk">
-                <div id="my_basket">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN3wAcYgtK2nz6SBIK0EZUfs9Tv8nv9V5l8g&usqp=CAU">
-                    <span>
-                        <p>My Basket</p>
-                        <br>
-                        <p id="bask">0 Items</p>
-                    </span>
-                </div>
-            </a>
-        </div>
-        <div id="dropdown_list">
-            <a href="#">Shop by Category</a>
-            <div id="drop1">
-                <a href="products.html">Beverages</a>
-                <!-- <a href="#">Fruits and Vegetables</a> -->
-                <a href="#">Food Grains Oils and Masalas</a>
-                <a href="#">Bakery, Cakes and Diaries</a>
-            
-                <a href="#">Cleaning and Household</a>
-                <a href="#">Kitchen, Garden and Pets</a>
-                <a href="#">Eggs, Meat and Fish</a>
-                <a href="#">Gourment and World Food</a>
-                <a href="#">Baby Care</a>
-            </div>
-        </div>
-        <div id="offers">
-            <p>🏷️ Offers</p>
-        </div>
-    </div>
     
     <h1>Your Basket</h1>
     <div id="checkout"></div>
     <div id="prodN">
 
         <p class="rightName">Product Name</p>
+        <p class="qty">Quantity</p>
         <p class="leftPrice">Price</p>
     </div>
     <div id="products"></div>
@@ -304,10 +174,17 @@
     // 1. get the data from localstorage
     let data = [
        
+    {
+            name: "Tea 1kg",
+            price: "305.45",
+            mPrice: "354",
+            img: "https://www.bigbasket.com/media/uploads/p/m/20005452_3-organic-india-organic-tulsi-green-tea-pomegranate-stress-relieving.jpg",
+        },
         {
             name: "Pepsi Black",
             price: "135",
-            img: "https://www.bigbasket.com/media/uploads/p/m/1200615_1-black-soft-drink-max-taste-zero-caldiet.jpg",
+            mPrice: "151",
+            img: "https://www.bigbasket.com/media/uploads/p/m/1200615_2-pepsi-black-soft-drink-max-taste-zero-caldiet.jpg",
         },
         {
             name: "Coconut Water",
@@ -333,21 +210,35 @@
 
 
             let div = document.createElement("div");
+            div.setAttribute("id","cartElements");
 
             let img = document.createElement("img");
             img.src = product.img;
 
+
+
             let product_price = document.createElement("p");
             product_price.textContent = "₹" + product.price;
+
+            let qty = document.createElement("input");
+            qty.setAttribute("type", "number");
+            qty.setAttribute("id","inc");
+            qty.placeholder = "1";
+
+
 
             let product_name = document.createElement("p");
             product_name.setAttribute("class", "productNam")
             product_price.setAttribute("class", "productPri")
             product_name.textContent = product.name;
 
+            let remove = document.createElement("p");
+            remove.textContent = "╳";
+            remove.setAttribute("id","remove");
 
 
-            div.append(img, product_name, product_price,);
+
+            div.append(img, product_name, qty, product_price, remove);
 
             parent.append(div);
 
@@ -406,7 +297,7 @@
 
 
     }
-    sum.append(ite, am, promo, final, ckbtn);
+    sum.append(ite, am,ckbtn);
 
     showProducts();
 
