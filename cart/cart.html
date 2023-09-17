@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Styles/index.css">
+    <style>
+        h1{
+            text-align:left;
+            margin-left:135px;
+            margin-top:50px;
+
+        }
+        #products {
+            margin: 1% 5% 10% 5%;
+            display: grid;
+            grid-template-columns: 80%;
+            grid-gap: 1%;
+            justify-content: center;
+        }
+
+        #products div {
+            box-shadow: rgba(34, 33, 33, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, var(--bg-opacity));
+            height: 100px;
+        }
+
+        #products div img {
+            height: 80px;
+            width:80px;
+            margin-left: 2%;
+            margin-top: 1%;
+            border: 1px solid gainsboro;
+            border-radius: 10px;
+            float: left;
+        }
+
+        #products div p {
+            font-size: large;
+            /* margin-top: 10%; */
+
+        }
+
+        .productPri {
+            position: relative;
+            bottom:40px;
+            right:5px;
+            margin-left: 90%;
+            font-weight: bolder;
+            /* border:1px solid black; */
+        }
+
+        .productNam {
+            color:black;
+            margin-left: 25%;
+            margin-top: 4%;
+        }
+
+        #checkout {
+            box-shadow: rgb(96 96 96/ 16%) 4px 4px 4px 4px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, var(--bg-opacity));
+            height: 80px;
+            background-color: rgb(41, 39, 39);
+            color: white;
+            width: 80%;
+            margin: auto;
+            padding: 1%;
+        }
+
+        #savings {
+            color: rgb(23, 200, 23);
+            margin-left: 1%;
+
+        }
+
+        #cos {
+            margin-left: 1%;
+            font-weight: bolder;
+            font-size: larger;
+        }
+
+        .ckbutton {
+            position:absolute;
+            right:170px;
+            top:150px;
+            width: 200px;
+            height: 40px;
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+            border:none;
+
+            /* border: 1px solid green; */
+        }
+
+        #checkout input {
+            margin-top: 1%;
+            margin-left: 1%;
+        }
+
+        #prodN {
+            margin: 2% 15% 0% 15%;
+            height: 24px;
+            width: 70%;
+            font-size: larger;
+            font-weight: bold;
+            display:flex;
+            justify-content: space-between;
+            margin-bottom:50px;
+            /* border:2px solid black; */
+
+        }
+
+        .leftPrice {
+            margin-right: 5%;
+        }
+
+        .rightName{
+            margin-left:22%;
+        }
+
+        
+        }
+    </style>
+</head>
+
+<body>
+
+        <h1>Your Basket</h1>
+        <div id="checkout"></div>
+        <div id="prodN">
+
+            <p class="rightName">Product Name</p>
+            <p class="leftPrice">Price</p>
+        </div>
+        <div id="products"></div>
+   
+</body>
+
+<script>
+    
+    
+    
+
+
+    // 1. get the data from localstorage
+    let data = [
+        {
+            name: "Tea 1kg",
+            price: "305",
+            img: "https://www.bigbasket.com/media/uploads/p/m/240067_18-tea.jpg",
+        },
+        {
+            name: "Pepsi Black",
+            price: "135",
+            img: "https://www.bigbasket.com/media/uploads/p/m/1200615_1-black-soft-drink-max-taste-zero-caldiet.jpg",
+        },
+        {
+            name: "Coconut Water",
+            price: "513",
+            img: "https://www.bigbasket.com/media/uploads/p/m/1206997_2-coconut-water-with-no-added-sugar.jpg",
+        },
+
+    ];
+        let string = JSON.stringify(data)
+        localStorage.setItem("cart", string)
+
+
+    let parent = document.getElementById("products")
+
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    // console.log("cart");
+    // let alimul = document.getElementById("bask");
+    // alimul.innerText = cart.length + " Items";
+    function showProducts() {
+
+        cart.forEach(function (product) {
+            // console.log(product.name);
+
+
+            let div = document.createElement("div");
+
+            let img = document.createElement("img");
+            img.src = product.img;
+
+            let product_price = document.createElement("p");
+            product_price.textContent = "₹" + product.price;
+
+            let product_name = document.createElement("p");
+            product_name.setAttribute("class", "productNam")
+            product_price.setAttribute("class", "productPri")
+            product_name.textContent = product.name;
+
+
+
+            div.append(img, product_name, product_price,);
+
+            parent.append(div);
+
+        });
+
+    };
+
+
+    let totalAmount = 0;
+    let totalItems = 0;
+    for (var i = 0; i < cart.length; i++) {
+        totalAmount = totalAmount + Number(cart[i].price);
+        totalItems++;
+    }
+
+    var sum = document.getElementById("checkout");
+    let ite = document.createElement("p");
+    ite.setAttribute("id", "cos")
+    ite.innerText = "Subtotal (" + totalItems + " items): ₹" + Math.floor(totalAmount);
+    let am = document.createElement("p");
+    am.setAttribute("id", "savings")
+    am.innerText = "Savings: ₹" + totalAmount * 0.25;
+
+    // let pr = document.createElement("p");
+    // pr.innerText = "Enter Promo-code";
+
+    let promo = document.createElement("input");
+    promo.placeholder = "Enter Promo-code";
+
+    let final = document.createElement("button");
+    final.innerText = "Validate";
+
+    final.addEventListener("click", updateValue)
+
+    let ckbtn = document.createElement("button");
+    ckbtn.innerText = "Checkout";
+    ckbtn.setAttribute("class", "ckbutton");
+    ckbtn.addEventListener("click", succ)
+    sum.append(ckbtn);
+
+    var ght = 0;
+
+    function updateValue() {
+        var promoCode = promo.value;
+        if (ght === 0 && promoCode == "Bigbasket30") {
+            totalAmount = 0.70 * totalAmount;
+            alert("Congrats you have got 30% discount.")
+            promo.style.color = "green";
+            // promo.value = "Promocode Applied!!";
+            final.innerText = "Applied";
+            ght++;
+        } else if (promoCode != "Bigbasket30") {
+            alert("Invalid Promocode. Try again!");
+            promo.value = "";
+        }
+        ite.innerText = "Subtotal (" + totalItems + " items): ₹" + Math.floor(totalAmount);
+
+
+    }
+    sum.append(ite, am, promo, final, ckbtn);
+
+    showProducts();
+
+    function succ() {
+        window.location.href = "makePayment.html";
+    }
+
+
+</script>
+
+</html>
