@@ -61,7 +61,7 @@
             border-radius: 5px;
             gap: 8px;
 
-            border: 1px solid hsl(0,0%,70%)
+            border: 1px solid hsl(0, 0%, 70%)
         }
 
         .filter-button1:hover {
@@ -74,7 +74,7 @@
             color: aliceblue;
         }
 
-        p {
+        h4 {
 
             font-size: 300%;
             color: #8f8962;
@@ -92,7 +92,7 @@
             background-color: #f1f1f1;
             color: black;
             padding: 10px 20px;
-            border: 1px solid hsl(0,0%,70%);
+            border: 1px solid hsl(0, 0%, 70%);
             cursor: pointer;
         }
 
@@ -189,30 +189,20 @@
             border-radius: 20px;
             padding: 10px;
             height: fit-content;
+        }
 
-        }
-        .original-price {
-            
-            color: #888;
-        }
-        /* CSS for the price container */
         .price-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Align elements vertically in the container */
         }
 
-        /* CSS for the original price (mPrice) */
         .original-price {
             text-decoration: line-through;
-            color: #888;
+            color: #a8a5a5;
             margin-left: 10px;
-            /* Add some spacing between price and mPrice */
+            font-size: large;
         }
-
-        /* Rest of your CSS remains the same */
-
 
         #products>div>button {
 
@@ -267,19 +257,19 @@
 
             <img src="https://www.bigbasket.com/media/uploads/flatpages/test-1/Beverages.jpg" alt="Image">
 
-            <p> Beverages </p>
+            <h4> Beverages </h4>
         </div>
 
         <div id="button-container">
 
             <button class="filter-button1" onclick="searchProducts()">
 
-                Hide Filter <i class="fa-sharp fa-solid fa-eye-slash"></i>
+                <i class="fa-sharp fa-solid fa-eye-slash"></i> Hide Filter
             </button>
 
             <div class="dropdown">
                 <button class="filter-button2">
-                    <i class="fa-solid fa-sort"></i> Relevance
+                    Relevance <i class="fa-solid fa-sort"></i>
                 </button>
                 <div class="dropdown-content" id="relevance-dropdown">
                     <button id="ascending">Price- Low To High </button>
@@ -310,6 +300,7 @@
             name: "Tea 1kg",
             price: "305.45",
             mPrice: "354",
+            description: "The Tulsi Original-Delicious, fragrant, exquisite, the finest Rama, Krishna and Vana Tulsi leaves are expertly blended to create a soothing, uplifting, full-bodied beverage that is inspiringly fresh and flavorful. Tulsi, encourages tranquillity, clarity, relief from stress, robust immunity and stamina. With its fresh taste and an astonishing array of health benefits, The Tulsi Original is, quite simply... Perfect.",
             img: "https://www.bigbasket.com/media/uploads/p/m/20005452_3-organic-india-organic-tulsi-green-tea-pomegranate-stress-relieving.jpg",
         },
         {
@@ -336,7 +327,7 @@
         {
             name: "Thums Up (6 x 500ml)",
             price: "350",
-            mPrice: "151",
+            mPrice: "361",
             img: "https://www.bigbasket.com/media/uploads/p/m/1212259_1-soft-drink.jpg",
         },
         {
@@ -347,11 +338,13 @@
         {
             name: "Red Label",
             price: "55",
+            mPrice: "78",
             img: "https://www.bigbasket.com/media/uploads/p/m/266616_16-red-label-tea.jpg?tr=w-300,q=80",
         },
         {
             name: "Sparkling Water",
             price: "100",
+            mPrice: "105",
             img: "https://www.bigbasket.com/media/uploads/p/m/265680_11-sparkling-water-club-soda.jpg",
         },
         {
@@ -367,6 +360,7 @@
         {
             name: "Bru Gold Instant Coffee",
             price: "490",
+            mPrice: "513",
             img: "https://www.bigbasket.com/media/uploads/p/m/40275722_3-bru-gold-premium-freeze-dried-coffee-100-pure-strong-intense-aromatic.jpg",
         },
 
@@ -380,6 +374,12 @@
             price: "448",
             img: "https://www.bigbasket.com/media/uploads/p/m/40279113_2-auric-gourmet-coffee-with-turmeric-anti-ageing-instant-focus.jpg"
         },
+        {
+            name: "Health Drink Vanilla",
+            price: "1605",
+            mPrice: "1685",
+            img: "https://www.bigbasket.com/media/uploads/p/m/273590_7-ensure-nutritional-powder-vanilla-flavour.jpg"
+        }
 
     ];
 
@@ -463,6 +463,24 @@
         parent.innerHTML = "";
         showProducts(data);
     })
+
+    var productElements = document.querySelectorAll("#products > div");
+
+    console.log(productElements)
+
+    productElements.forEach((productElements, index) => {
+        productElements.addEventListener("click", () => {
+            // Get the corresponding product from the data array
+            const product = data[index];
+
+            // Store the selected product data in session storage
+            sessionStorage.setItem("selectedProduct", JSON.stringify(product));
+
+            // Redirect to the product details page
+            window.location.href = "product_detail.html";
+        });
+
+    });
 
 </script>
 
