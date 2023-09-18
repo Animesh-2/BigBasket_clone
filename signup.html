@@ -204,14 +204,14 @@ function closeform(){
     var userdata_str= JSON.stringify(userdata)
 
 
-     //get to localstorage if there is existing user ||or make empty array[]
-     var userarr = JSON.parse(localStorage.getItem('users')) || [];
+    //  //get to localstorage if there is existing user ||or make empty array[]
+    //  var userarr = JSON.parse(localStorage.getItem('users')) || [];
     
-     // search the list if
-     var userExists = userarr.find(user => JSON.stringify(user) === userdata_str);
-    if (userExists) {
-        return alert("User already Exists");
-    }
+    //  // search the list if
+    //  var userExists = userarr.find((user) => JSON.stringify(user) == userdata_str);
+    // if (userExists) {
+    //     return alert("User already Exists");
+    // }
 
     //push new user to array
     userarr.push(userdata);
