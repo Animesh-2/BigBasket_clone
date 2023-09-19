@@ -218,7 +218,8 @@ function closeform(){
     let btn = document.getElementById("parent")
     btn.style.display="none" 
 }
-   var userarr= [];
+   var userarr= JSON.parse(localStorage.getItem("users"))||[];
+   //by shashikant
     
    
    
@@ -237,11 +238,12 @@ function closeform(){
         username, email, password
     } 
 
+    userarr.push(userdata);
     // var userdata_str= JSON.stringify(userdata)
 
-
+     localStorage.setItem("users",JSON.stringify(userarr));
     //  //get to localstorage if there is existing user ||or make empty array[]
-    var users = JSON.parse(localStorage.getItem('users'));
+   
     // var ifExists = users.find((e)=>{e.username == username
     // })
     var ifExist = false;

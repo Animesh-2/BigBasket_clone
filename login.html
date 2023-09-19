@@ -176,7 +176,7 @@
                             <input type="password" id="password" placeholder="Password">
                         
                             <button id="submit" onclick="continuefun()" >Continue</button>
-                            <span>Don't have an account? <a href="signup.html" class="signupform">Signup</a></span>
+                            <span>Don't have an account? <a href="signup1.html" class="signupform">Signup</a></span>
                         </div>
                         
                         <P>By continiuing , I accept TCP - bigbasket's Terms <br> and Conditions & Privacy Policy</P>
@@ -193,7 +193,7 @@ function closeform()
     btn.style.display="none" 
 }
   
-    var users = JSON.parse(localStorage.getItem("users"))
+    var users = JSON.parse(localStorage.getItem("users")) ||[];
     
     function continuefun()
     {
