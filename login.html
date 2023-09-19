@@ -162,7 +162,7 @@
                         <!-- <p class="otppara">Using OTP</p> -->
                          <div id="input">
                             <input id="username" type="text" placeholder="UsernameOrEmail">
-                            <input type="password" placeholder="Password">
+                            <input type="password" id="password" placeholder="Password">
                         
                             <button id="submit" onclick="continuefun()" >Continue</button>
                             <span>Don't have an account? <a href="signup.html" class="signupform">Signup</a></span>
@@ -182,24 +182,31 @@ function closeform()
     btn.style.display="none" 
 }
   
-    var data= JSON.parse(localStorage.getItem("users"))
-    console.log(data[0].username)
+    var users = JSON.parse(localStorage.getItem("users"))
     
     function continuefun()
     {
+        var usrEml= document.querySelector("#username").value; 
+        var password= document.querySelector("#password").value;
 
-        // data.map(ele){
-        //     if()
-        //     else()
-        // }
+        ifExist = false;
+        users.map((e)=>{
+        if((e.username == usrEml || e.email == usrEml) && e.password == password){
+            ifExist = true;
+        }
+    })
 
-
+    if (ifExist) {
+        window.location.href="home.html";
+    } else {
+        alert('Invalid Username/Password');
+        window.location.reload();
+    }
         // if(data.username==)
     // var username= document.querySelector("#username").value;    
     // localStorage.setItem("username", JSON.stringify(username)) 
 
 
-    window.location.href="home.html";
 
     }
 
