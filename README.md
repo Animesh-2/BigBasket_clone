@@ -48,5 +48,15 @@ The page appears to have navigation elements, search functionality, product list
 
 ![Image](https://cdn-icons-png.flaticon.com/128/9453/9453946.png)
 
+# Home Page
+![Image](<Screenshot (61).png>)
 
-![Image](<Screenshot (60).png>)
+
+# Product Page
+
+![Image](<Screenshot (63).png>)
+
+# Login/ Signup Page
+
+![Alt text](signupPage.png.jpeg)
+
