@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body{
+            background-color: aquamarine;
+            /* position: relative; */
+            padding-top: 15%;
+        }
+
+        #parent{
+            margin-top: 50%;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            margin: auto;
+            width: 50%;
+            height: fit-content;
+            background-color: white;
+            border-radius: 10px;
+            max-width: fit-content;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            }
+
+           
+   #parent .close{
+    color:black;
+    font-size: 30px;
+    /* font-weight: 400; */
+    opacity: 3;
+    position:absolute;
+    right: -30px;
+    top: -20px;
+    background-color: transparent;
+    border: none;
+
+}
+
+#parent .close:hover{
+    color: #ff0000;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    border-radius: 50%;
+}
+
+        #right{
+            background-color: black;
+            color: white;
+            text-align: center;
+            /* border: 1px solid red; */
+            padding: 30px;
+            padding-top: 0px;
+            /* padding-left: 30px;
+            padding-right: 20px; */
+            position: relative;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+        }
+
+        #left{
+            background-color: rgb(240, 240, 240);
+            color: grey;
+            /* margin: auto; */
+            /* border: 1px solid rgb(20, 14, 190); */
+            padding: 0px 30px 0px 30px ;
+            /* padding-top: 0px; */
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            
+        }
+        #input{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+        }
+        img{
+            border: 1px solid gray;
+            padding: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+        }
+        #logos{
+            width: 170px;
+            height: 170px;
+            margin: auto;
+            border: none;
+            padding: 0px;
+        }
+        #centerPart{
+           /* padding: 10%; */
+            margin: auto;
+            padding-top: 20px;
+          
+        }
+
+        #lowerPart{
+            display: flex;
+            align-items: center;
+            align-content: center;
+            padding-left:0px;
+            /* padding-right: 10px; */
+            padding-bottom: 20px;
+            margin: auto;
+            gap: 5%;
+            position: relative;
+        }
+       input{
+        text-align: center;
+        height: 20px;
+        border: none;
+        border-radius: 2px;
+       }
+
+       #submit{
+        height: 20px;
+        background-color: #3a0101;
+        color: rgb(111, 95, 2);
+        border: none;
+        font-weight: 600;
+        border-radius: 2px;
+        
+       }
+       #submit :hover{
+        cursor: pointer;
+       }
+
+       .otppara{
+        margin-top: 0px;
+        text-decoration: underline;
+        text-align: left;
+       }
+
+       h2{
+        text-align: left;
+        margin-bottom: 2px;
+       }
+       .leftLowerPara{
+       font-weight: 100;
+       }
+
+       /* @media all and (max-width:720px) {
+
+        #parent{
+            margin-top: 50%;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            margin: auto;
+            width: 30%;
+            height: fit-content;
+            background-color: white;
+            border-radius: 10px;
+            max-width: fit-content;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            }
+
+       } */
+
+
+    </style>
+</head>
+<body>
+
+    <!-- <button id="enterform" onclick="openform()">login</button> -->
+
+    <div id="parent">
+            
+        <div id="left">
+          
+           <div id="centerPart">
+            <img id="logos" src="https://i.pinimg.com/750x/46/3c/d4/463cd450a22064282e054785fb5a1b4b.jpg" alt="">
+            
+          
+           </div>
+           <hr>
+           <div id="lowerPart"><p class="leftLowerPara">Find us on</p>
+
+            <img id="playstoreImg" src="https://www.freepnglogos.com/uploads/google-play-png-logo/google-play-arrow-png-logo-8.png" alt="">
+            <img id="appleStoreImg" src="https://icon2.cleanpng.com/20171220/req/apple-logo-png-5a3a2721ef5432.80160087151376054598035602.jpg" alt="">
+           
+        </div>
+           
+        </div>
+
+        <div id="right">
+            <button type="button" onclick="closeform()" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <div id="form">
+                        <h2>Signup</h2>
+                        <!-- <p class="otppara">Using OTP</p> -->
+                         <div id="input">
+                            <input id="username" type="text" placeholder="Username">
+                            <input type="email" id="email" placeholder="Email">
+                            <input type="password" id="password" placeholder="Password">
+                        
+                            <button id="submit" onclick="continuefun()" >Continue</button>
+                            <span>Already have an account? <a href="login.html" class="loginform">Login</a></span>
+                        </div>
+                        
+                        <P>By continiuing , I accept TCP - bigbasket's Terms <br> and Conditions & Privacy Policy</P>
+               </div>
+        </div>
+    </div>
+</body>
+<script>
+
+function openform(){
+    let btn = document.getElementById("parent")
+        btn.style.display="flex" 
+}
+
+function closeform(){
+    let btn = document.getElementById("parent")
+    btn.style.display="none" 
+}
+   var userarr= [];
+    
+   
+   
+   
+   function continuefun(){
+        
+    var username= document.querySelector("#username").value; 
+    var email=document.querySelector("#email").value 
+    var password= document.querySelector("#password").value
+
+    if (!username || !email || !password) {
+        alert("you need to fill up all the details");
+    }
+
+    var userdata={
+        username, email, password
+    } 
+
+    // var userdata_str= JSON.stringify(userdata)
+
+
+    //  //get to localstorage if there is existing user ||or make empty array[]
+    var users = JSON.parse(localStorage.getItem('users'));
+    // var ifExists = users.find((e)=>{e.username == username
+    // })
+    var ifExist = false;
+    users.map((e)=>{
+        if(e.username == username || e.email == email){
+            ifExist = true;
+        }
+    })
+    if(!ifExist){
+        if (localStorage != null) {
+            userarr = JSON.parse(localStorage.getItem("users"))
+            userarr.push(userdata);
+            localStorage.setItem("users", JSON.stringify(userarr));
+        } else {
+            localStorage.setItem("users", JSON.stringify(userarr));    
+        }
+        alert("Account Created!")   
+        window.location.href="login.html";
+    }else{
+        alert("User Already Exists")
+    }
+}
+     
+
+</script>
+</html>
