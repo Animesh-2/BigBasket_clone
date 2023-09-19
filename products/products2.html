@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #boxModel {
+            margin-left: 100px;
+            margin-right: 100px;
+            overflow: hidden;
+            background-color: hsl(0, 0%, 97%);
+        }
+
+        #home {
+            display: flex;
+            align-items: center;
+            width: 70px;
+        }
+
+        #image-link {
+            display: block;
+            width: 40px;
+            height: auto;
+            text-decoration: none;
+        }
+
+        #image-link img {
+            width: 100%;
+            height: auto;
+
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+        }
+
+        #button-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 0 25px
+        }
+
+        .filter-button1,
+        .filter-button2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 160px;
+            height: 50px;
+            font-size: large;
+            font-family: monospace;
+            border-radius: 5px;
+            gap: 8px;
+
+            border: 1px solid hsl(0, 0%, 70%)
+        }
+
+        .filter-button1:hover {
+            background-color: rgb(104, 104, 104);
+            color: aliceblue;
+        }
+
+        .filter-button2:hover {
+            background-color: rgb(104, 104, 104);
+            color: aliceblue;
+        }
+
+        h4 {
+
+            font-size: 250%;
+            color: #8f8962;
+            padding: 10px 0;
+        }
+
+        /* Style for the dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style for the button inside the dropdown container */
+        .filter-button2 {
+            background-color: #f1f1f1;
+            color: black;
+            padding: 10px 20px;
+            border: 1px solid hsl(0, 0%, 70%);
+            cursor: pointer;
+        }
+
+        /* Style for the dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+
+        }
+
+        /* Style for the buttons inside the dropdown */
+        .dropdown-content button {
+            width: 100%;
+            padding: 10px;
+            text-align: left;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: x-large;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        #fresh>img {
+            width: 70%;
+            padding-top: 20px;
+        }
+
+        #products {
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding: 30px;
+            gap: 20px;
+            max-width: 100%;
+        }
+
+        #products>div {
+
+            font-size: x-large;
+            text-align: center;
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+            border-radius: 20px;
+            padding: 10px;
+        }
+
+        #products img {
+
+            width: 200px;
+        }
+
+        @media all and (max-width:1080px) {
+
+            #products {
+
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                padding: 30px;
+                gap: 20px;
+
+            }
+
+            #products>div {
+
+                font-size: x-large;
+                text-align: center;
+                background-color: white;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+                border-radius: 20px;
+                padding: 10px;
+            }
+
+            #products img {
+
+                width: 100%
+            }
+        }
+
+        @media all and (max-width:720px) {
+
+            #products {
+
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                padding: 30px;
+                gap: 20px;
+
+            }
+
+            #products>div {
+
+                font-size: x-large;
+                text-align: center;
+                background-color: white;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+                border-radius: 20px;
+                padding: 10px;
+            }
+
+            #products img {
+
+                width: 100%;
+            }
+        }
+
+        @media all and (max-width:480px) {
+
+            #products {
+
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                padding: 30px;
+                gap: 20px;
+
+            }
+
+            #products>div {
+
+                font-size: x-large;
+                text-align: center;
+                background-color: white;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+                border-radius: 20px;
+                padding: 10px;
+            }
+
+            #products img {
+
+                width: 100%;
+            }
+        }
+
+        .price-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #a8a5a5;
+            margin-left: 10px;
+            font-size: large;
+        }
+
+        #products>div>button {
+
+            width: 100%;
+            height: 50px;
+            font-size: large;
+            border-radius: 15px;
+            background-color: #8f8962;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #products>div>button:hover {
+
+            background-color: red;
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="nav.css">
+
+    <script src="https://kit.fontawesome.com/8f738ffcbd.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div id="heading">
+
+        <div class="nav">
+            <div id="nav1">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABXFBMVEX+/v7///8AAAClzTnrHyj09PQbabP4+Pjy8vL7+/vv7+/rGyX//v+h0zoDBwifyiLZZC3w9t+Oj46v0lPpAACampqsv90AX6+y1F33+/EAXK7rDhsAYq+ou9wAAAbsMDH0mZbxg4Xc3Nyrqqu+zuTHjTP1pKEAVqtJf7zFxcX75OXvACeOsTgpMBgydbnqAA1fjcPe5/LOzs54eHiDg4Pi4uKjo6PM2OoATqiXsdX3ubWf1TpcXFwzMzNra2tNTU33xsPgSinuUVEAUaoARaSAocyOqtI+errW3u3a6rW82XXE3oqoz0Lq89cuNCMMChYhJRdxmS9OaCevujbNhDDYcy3InTNkfCpLWyWFozXxenn2tbL87OvdWCt6qDfsSEkfICB0jjM+Pj8oKCm5qTPuXl83Qh7AoTOtvzeZvjvtNzq2sTXyjYvvcG7QeC/mNSeToDWinTYAGBHR5aMeiY/HAAAT10lEQVR4nOWdi1vbxrLANcZClh1IwzFWKxtIwKfmkYMxjxAnBGiCgbacm77SNAnnlpCTNiHNzX38/993Z2b1sl6WbNlIzjTFsrRa7U8zOzMrySsJhi+SJCksMv3jPyy4fhRHH2rlKtLIxCPhgSQmEp+8RMy4UVWH24hhVayK1hs8IQJ8GrDkkGQohKQ41IzUG8/Sp6qSsofRmMQJJWppdDgHpiQRZfINSrQ2aiJAfDpbmUDqT7RNCRKq2O+gD+W5VUlGniBkUoSSUlAGhXNgYm2JtSyRWuisJ4YnRE3K8SRBKCepPltQkXICrRuYUJILA/e9QEapMLhvHbACtKUh0ZmQA3udgQhJf8OXAfU4yM6FIevPErlwLYRyIULSmYyAOoDP6ZdQKY6MTzAW+40d/RFKRWWEeEKUQp9t7WenIQaIMOnPVPsgVAtJ5y9RBY88CkJXBDTrGYJ4KwY5vhrjEqqj9TBu4eMPlVDxhHiznmgNHLwwFGI61ViEfi501IToVItDI1SLw2p0zMLFOK2OUVa5Nh/qkTiWGp1Q9h8EmvUMQYIrxrOdPOH1+lCPqJE7Y0RCqZgaCzUlameMVszXx1y3RIyMkQhT5GOcEg0xCqEip6oLWgKRrsZFIBz2pZgBJEqa2pvQm6ilSCIExp6ESno1SNLbUHsRjuRq2iDSc1jcgzDlGiTppcVwwgwAImJ40AglxNToupsfQSA8LoYRSmnMZPwkNIEL25YVQETsjzA7gKGIwYSJ3/McpqjBMSOQUBn9Ve0BBJsbl1AtZMGN2gKBF4uDCNM34u0hgYP+AMIseRlDghD9CbPVCQ0J6Iq+hGpKh7zhAv6333xXZtBGWXzt1I8wU5HQKb5R0YcwmzZKAn7DDB/CTAwoAsTnUriXMLM2SuJjpx5CKe2XLcLF6089K7IN6GOnbsJMxnqneOK+mzCrodAWd1B0EWbazQhxOxsXYcbGTH4ChTDCdN5jiilqIZhQymw24xRXBt71JQvXf6OIHESojgth1xUNJ+G4AHYr0UFo5Wvm90iSysLOnuhYHB8VdinRQWilM6lUS7zCjoBhE8pBpVPS6HiFbSXahHY6k9JGxynsSGwswswPKrrFHmJYhI50Jp1qiVcYLDO1No2TJyWxfkpkfirjkHM7RVVchFm/eOGVQjehOl5+hsT8hb/k8TPjIqavMQmvuz1DkC7CMTRSy0ylcTVSy0ylsTVS00ylsQz3QkTQl8bWSE0z/XwJoZdcQ4vjik3ozUkBvv3uyzD5/hbcuI5GxxPOTSU/Twq3zm5OhMrNm99nAVE2CV0md+OrcDzB+H0GDDWIEL6PQDhx859itxuSR5k3bgTqt68uHGEn3xJgEKrubghsolMkYYikRF+3E+aKCoX4UzGAUug1PwxQvd7VqsqEbkcDt4hw6otSPl/6u2D8j6dP73oIv6SdrxYWFpqrXYeHv0oLC9Wv/ZoEUi6XW4lNOJPLzYbuBID1bnqLkKuRvI7GQbhmEP4jl/MS/o12XiiVSmUX4Z1qqdT0J4QhEi76FJEFodvIfAjngwnzeS9hPh+gQ8hNXwOh28QHJyw3m+V0ELKVesaGAxMevnrw4NVqOghVmh3N40oHJAzxpSMnVGkGOY8fHpgwtCWjJQQm9Kz1Ev4Q4ktTTSgRoU9W2k049fDhjz/NE2F3BuAk7BpxeBYdy0zoyRM8I5auFb6EXQUGInz48y9ffPHs1/dnE3ef//bbTy8CCA/vvH378hVPzAPnqyjnvAgPXuL6B+yzz3GdIJRnDx492luyJ2td2cYVl/v3zMAF6tL+JRaZ5SdBnYQGFMAi77JNWDTlH0d833CBlKGEE/9aWyvlS2ulX/8zx/LDXS/h+WGpiVG+2qwe0gFfllFu09JhnteXr1Zh9fdm+S8m3NzMGSKyEFi8MFcgCLd/xVoxA05CPBcHB7gXFA/MAvuIjNtz0/O5N96shvtgGGHpl0/4l2Xtlx/n5+dz+O/1lIuwertslCqVEZEjPuU08MBa31zFxeptJpyxms9dEhZp6eLyclog4pol3jhP7c5tgU0IsM/QtMu0qGE6d8mE09O0wvvwby/CPOmRlEiIv76fOHvxD6zzhYswX81Xm+VmlUqRxRo5DawyYBUVWi3l+UwQIbbkcqWoLDIoNgke5ejsoyxeYuUFTEFww94mmuriPqkcbEL6jmqWiWZrUy6s7NEZQyOfoXMxs+1VouID2EWYL3369cO/n63xohE45i/chPnyy8PVw7dN4nlrEz6mbc07uOljk1kNwgPhIxaFje3gx46wQWo5+iFU4aUxsNvmIoIQJAJcwoUt218RWtH0NH4dUZG8w5Iuwm8mptCZ/p0QRei4Oz+de+0ixBSN5GNVKNEgXC0T4CveRKsswh3Dt97DZsnEs2S6kX1aJqAZc83m1rZBCLBnABbx857pny/FtiBfih0xXIdrZwzz8BumJcKpP+bn/3D1w7fChyoGhkF4Gz9Kj4XrUEuWleb2zNYrrIqdlaLlJ/eYEBW35wgxRj+EAwHI3fTC8sP45U0IYS8dlp49ZJipP1mJvPw6N/+0m7B5aLTmJTG9NQnflliF9iaD0NQY98BZ5/W7Rd6KjUb/saLYgZQJD8xkgTS9Ze2zw4bQtw7X/jT85jsm/ECLL/BI77sJz42WvMKeWFowCa+c8F/bhFZOI5pKaipuLs3uH1zkBKFywZ7ycnaTr5UJQjLRfTBPzJK6Ygidjp1wHYYS/mwGPzZZ5r2LVd51EpaujCs1cMi+RnUQmgkdPGhahDsW4ZYIZ0tvrPAhOtrOm5wRDvZWhJVO03dxckAlRzpt7zJNPiZEh95bFhEIX3QR/m5ak5fQ0qFFmPMQmsH7YGvlQHgdkJb2zIh4WWSHiUSo4gsaDKlWMLTDarAO5R46/GAAnrGV/ttfh3nVgVEqSUbEf+zsh39VfQj3yWmS67+8t7lDncogJMNVN+/tsSbfqEKHmApN57YFYW5mZ9EhZj/0HVz0IDTGFhMfmJA1+iMmSN39sGwqir3n72Y/ZOfy0ci2rmxfuun0NEsFbrfwKoLQWKa/K5dsmpSz7IhogYoCtOFt6JIbYf3Qe8/CGS0+CV/68L+IsMTR4qfc/A+uaHFHhATpSnwxCEmjRI/HZx/k9qVA6fIipaCmPxeEO7OzRo6G1aLy7pkRv5gTkQFVf2CdJXlpaUkJjvg4sAiP+Gt/CkTOab5ghWKK+5Mr4ovLiQIDkQxChb6WSocqKLdp0SS8dISyCwr7ZnBDz0/85P8LhhYpQpqElCJw0rbEeYxdSS4kp4FeOiTEqYcTHPC5G049N7uhg7CEYwoQOsNgYWVtzFVq5q+q1bwza1uyc7QZR3PNmK6y3gShyn7EJESzJlcsi3SP9ylwJeE69K50EubXPj37F6el+W9QnVOvMWn7baqbEPOV5sLjPOup/MomlB5zMk7pTPOjM/O+x6H6kmP1Do8fSDYf5TgdY98jumNxj23Yyrw3xVhilmIjZwSbF1zAuA4bkJeGEtLgyRwB/ffz16//QDfz9Kw78y5dYf8rlbhY86Nz9KS+5VEFDhC/PrSjBUWHre09Y/TE/uPRzOw2+o832MOmt9H5kO/c397mOLIEjvHhljgHtE9ub3v7ERUgz4XeB0/UttfZ9IyH7z6tGcPD/P/8L0Wo+dzF++4RcKl8Z7XUFAOR8kcwCPmKMA79Py5UqwsvV8EmnJatAM+xz/56WeSR7zYsOuLdEjhHwDSwQjtV9+2ALzK5WTaOJS9hiKfBwf2nD1MTv9AAca307Oz5U67w+dmEk7Bazv+FruTrKxwFNh9z2DDH+IaI+biok6JeYW9/EeQtbtu+MWZSxJD4kgxzVtiwMvtINH+LylAqbgw22LHQ0GpF5AnTM+aDv/uGTUSxUknie0/vfn5HV56mcOHndxPU9d7fvWvqj+Q7Ovi5rAqnIJ+fK0bvP0dZPYfzQxIjupFe+QKAuMy+uLijmL0G/QnG76Iop1r14bodVYQh3mwUxgC/qfDNCFyiiWnMSoqLOz6/SwO/sYUEX05EkJvfGkHLOILdzw3lrZabzWb5XFyFqvL1nK4SjgPaX50LXcuesuBTiVdZAYS3etzjNow0/DY3SOxnr1bxwKu/kyt96Zt0DFl8CSX4tifizb991au9cFhm71O9ytMFm2r+/BoIffNSWn/ru4mbYXL2fxHmLIdX5SrHQ857FiJfGU9UfC9FSWTUX4WKFOlJDFh9XG5WS9Vqtdy8fT0zvPpeTRRyI1yi1Y/u5hVd9L59qPi5gREIEw710NYAZ5gHCRFF8rlvMVYi+91dGyvxvX84VuJ7D3ichO8Bex6JGifh+/hj+Zy+Kfwsxjh3RPB/6muMBPyf+honkX2fTQwRcA3fXOJa7T+G6yO/6TslMp5NjO5MoV6vi+ACrbmKJVhNHT/mTtEe7NVzLYBT+loH5/51qw6r+T0PWzjZ6C9vN54vjWymAA2tIdoLFV3TakL0IoCOX7QNgFaD1vAWLAkbXMgaaMGk1kC533Kqtdjz8FBvPGn1QwjWU9BRd9jV12sdQVjXJk2pFaHC37QWtOzV2q7xTbOUCOtaW+gQTNODjcapeVFCEgoVhmxdq6B/7QrYXSS6nccn7OhzNY3tBSr3GzqDNBpPirBcY5Q5aN3XG7ys6/frMMeLk8s2ob7L7VcLChR20Ywl9UTflemlzi36Su8fhdOiKiviu8RLLUnh9++e7hbZM+7uRrVZkzCqq4FaTV3W69aJFK1HsTTHzd8gLr57uy7WNkwTQ8JTLtK6vz53v9HYgOIRnoyjOrQmnzSeoJVXjtrL9yv1o06HN8MpLXVaRw0FTbXROMITdPzkSUOvR0K0fm8RsSOikS7DnN4xm3ujZhK2cWldGKbkIDwlLeP62rFFWOu0j4/bUKhNau0OdlXlGFcdt2StVm9t6Mdk/Npyva7VJivHNfze0tf15XZLn1RULLLbUaDd2GjVa3qU6Z5i/+4JjRRPtq67CLEGophDsNoGdReDEMvTGrLUdYtwUkerngS5prEf6gCckFrbegVNV5sEbDuqqa5hl6bOLbV0DbcgoYr/02+XpRoZSrtRGQIhkAaOj1lR3YS7OnkZ8j0aDThNHWKLJ2uVgm77GvQ0ldPT0xYS6ojQJu/LhBu1ZZSaLtc1PBsg/sq6VmzpNZUJFdy31kFX1pjcWF5e1zrxCCP9/hCNroZdQTO8qYMQdTV5AjIBzTkICbkhw/Kk0K3k8DRuwuXaCSGuK3XtxCJUdZ0IwSBUOg1NP0XL55LtCISO3x9G8qZwrG0oBblSqxlO2+yHBhqTnTgIBRo7VM24QxhESPbPYhKSKe5qNdVBiNLROkpjMnJe1PUr2Sg6P6G+Q40TZkpdggkpGFK/IZ1Rww3CojBPKNLmikGotXcxHhYchMtap6XuNmp1RW61LMJaR26t42abUMUo2kY3t6xttJTibmQjjf5bbjh90qBsC5YbRtC/oaGcoBa0GlmVpOiY33Q4kdGwQx5j1qOTw1nGr+v8yA0S6uTz64r2hAgpHrR17aiFhRt646gNlYbohxRn9XUZux06NvyrqbtHek2nnGIdtzTuR7gy0fVb7ghmSjkmx/rdOdOPzaFUQGnjB51TqNMKEB8qVPAveRjccW6uLYs8YY6lpc7N4Qnepe1Q6XQog213jistSneJUF8vHHewDijMUc/Gv6qC5doU8VVaqPdsr+v3+FHM1LR9uw84K7C/S86KrdWOO1QAdkHJTMLsnSThadxFrFqidkPXnAqpupRBOhx8zOqaFyNVc5uIaDGouOY2Sdv8NIO3xjM/TbomHUjgNociuQj7vlpju4DEJVbFrsLeeaKcc33FanRKCyvW5JC2Jx77+do+gzn37ICR0kbHKAy+8ybaSkxlo2MVtv1MF2F/883HakcfVfdVOGD+0jG6gREwB23m3oAUKIHzCI+LErtnZe8e0IyFEkGWAgnHf072z2Be/c/g3Qjj/36L7E8n3PMdJam6nNGP9HzPzGfwrqBsO5so73vKtJ2Cz7vlfAjH/71r2bXTqO/Oy2xQ9LPRAMKMZuD+ryD3f3wrk3E/zntIs2mnsd4l+xm8DzhzVzTiv9OZXnR93a2OI/Hfy52xqNjPu9Wz5W2COmE4YYYQQwBDCaWsIBZDKUK2gZqJVwNjZAuDCCXMxtv05EA3GoEQlPQj9gDsRQhy2sfDhR6APQnTrsVeGoxACEqatdhTg1EIQU6vFntrMBIhGmo6gwZEAYxEiHHxumH8RI1golEJ04kYHuhjEqYwgVNDU7X4hGkb9EPgkL5/Qgh4AYNZzzAwAism55c8YUBgjEWYVOFoPiY2IXVG7/GugzCij4lPSJaaAkLFewctOUIfSx01IcSx0D4I0Ye5ft04WkI+/nAJef61vhsdT3wqlqP70P4JQb2254rUwMu+yRJe07AYpEJ8BfZLCFKv9y8NAVCJmqYlQohO1e1xhsynFmO60IEJyVRHxohdvy8DHZAQ4/+oBv+y5zGgERGCNBKXU5AHa+QgO9Ml4yEzYvjtI0IkSCj0OKz+CIPqLxFCIJ8zlNiBSXD//sWWJAjpalziTkeVI11J6y3JEGI9SpKKpDlOEmtZQvUAeR2Zfpw+KBw9QjCod3FKgoTAkDwlzAB4ciFJPEiakCpESFXqQ5XAfW9w3+lpUNIVkihESRMHxYAjumRci0uGQkiiIqai9EhdeQYBVaGiyZqmQ4ZGyJWrovWKYukTwJ6ZQaGNfBqG2oih1m4cgx5ZMkTG/+gfiSSN4uj/D3PcBbHMJ7DdAAAAAElFTkSuQmCC"
+                    alt="error">
+            </div>
+
+            <input id="search_bar" type="text" placeholder="Search For Products...">
+
+            <p id="location"><i class="fa-sharp fa-solid fa-location-arrow"></i>Select Location</p>
+            <a href="#" id="login">
+                <p>Login/Sign Up</p>
+            </a>
+            <a href="cart.html" id="lnk">
+                <img src="https://cdn-icons-png.flaticon.com/128/9453/9453946.png">
+            </a>
+        </div>
+        <div id="dropdown_list">
+            <a href="#">
+                <p>Shop by</p>
+                <h6>Category<i class="fa-sharp fa-solid fa-caret-down"></i></h6>
+            </a>
+            <div id="drop1">
+                <a href="products.html">Beverages</a>
+                <a href="products2.html">Food Grains Oils and Masalas</a>
+                <a href="#">Bakery, Cakes and Diaries</a>
+
+                <a href="#">Cleaning and Household</a>
+                <a href="#">Kitchen, Garden and Pets</a>
+                <a href="#">Eggs, Meat and Fish</a>
+                <a href="#">Gourment and World Food</a>
+                <a href="#">Baby Care</a>
+            </div>
+        </div>
+
+        <div id="offers">
+            <p>🏷️ Offers</p>
+        </div>
+
+    </div>
+
+    <div id="boxModel">
+        <div id="home">
+            <a id="image-link" href="index.html">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAB2CAMAAAAqeZcjAAAAY1BMVEX///8AAACQkJBycnLExMXAwMBkZWWdnp709PQ9Pj4wMDCIiIni4uIFBwgVFhbIyMjq6uq1tbVJSkqkpKSsra1RUVGVlZZqamqCgoJDRETS0tIpKiocHR0iIiQ1NTVVVlZdXV3/H8vbAAACjklEQVRoge3a25KiMBAGYAMqUYggIIiOwvs/5aTDuo4QnJzdqu3/Ykoh+lU4JB2c1QqDwWAwGAwG8/+kyD6iXm8fcIs7IfsitEp3hLHgLldF7kFdoR43/M+OBlRLUFerY1BXqDW8ArcL5NITYaQaX9fcLcO4/VMFl4VxQU2ebyv+9hRcBZf4dweOJK+bArhbTjTTjQnf2PtUW5k6ukNw1bO7qI7u1o965l+dLu1s+M7Yj8rIeXl3ynd7cH9RFRqYRKEzHlxQ298axa5dJdW5m6reHuAuXuy6idRvyvjdTaavKhzhh+uovzAQtOoTOfQ3slfFsKdRPtA3Q6h6YDIdtIoWOvwseswCpVKvWypZu4YFWm/ngmpUfnf8g7W5yhc5Zh/dPQp4/RzNVegvMTvOdgsc2pn1VyznLJaRZi6ondXitTiNy8KwKnc7XTeHhZz1Qp1Cfzfq7S8E5uu6qhLNg/TMJqmqGsockuuojIlnE4Mp24qPi6+5KKt/wsxLbph3H1HqL00faS0qfT7tbv9+kd7dn9uxyid1kvUbluZ1EyXHxfMWa13Diux6eJy3Qyq/zzywdEt+Rjriu2fFYylSnqMmisUzQFnF5p6F2jDOxquT5gsjvnN2PXlowo/41/z8Omf76fr5LlsIuGYz3tnX25/PVvvZgOCaTeYPC66ErH2z2/kcmkouZscs1CrToekoeQrnmC2u8+uWT1mlb/aL7KfbsgO5T68px+yFzdniRm7TI+CalZTslB/46S9RIdg9OXhm84+xO2SRRRbZf4adPVm9LLBuZ6BdlbzmLGdZ9NqsKm1YRmZhUlbWzqK3ssxnoJu0nSmbpZEsybQdbWTN0o/87wsGg8FgMBgMxle+AQkcH3BVgVDHAAAAAElFTkSuQmCC"
+                    alt="Image">
+            </a>
+            <span>Home</span>
+        </div>
+
+        <div id="body2">
+            <div id="image_slider">
+                <img class="mySlides"
+                    src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2834-1200x300-24082023.jpg">
+
+                <img class="mySlides"
+                    src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2893-La-espo-l1-fom-1200x300.jpg">
+
+                <img class="mySlides"
+                    src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2719-l1-fom-c-Fresho-Ghee-1200x300-25-08-23.jpg">
+
+                <img class="mySlides"
+                    src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2328-L1-fom-c-Happy-Chef-Herbs-Seasonings-1200x300-25-08-23-all.jpg">
+
+            </div>
+        </div>
+
+        <div id="fresh">
+
+            <!-- <img src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL2638-l1-fom-c-BB-Popular-Desi-Ghee-1200x300-25-08-23.jpg?tr=w-1700,q=40" alt="Image"> -->
+
+            <h4> Food Grains Oils & Masala </h4>
+        </div>
+
+        <div id="button-container">
+
+            <button class="filter-button1" onclick="searchProducts()">
+
+                <i class="fa-sharp fa-solid fa-eye-slash"></i> Hide Filter
+            </button>
+
+            <div class="dropdown">
+                <button class="filter-button2">
+                    Relevance <i class="fa-solid fa-sort"></i>
+                </button>
+                <div class="dropdown-content" id="relevance-dropdown">
+                    <button id="ascending">Price- Low To High </button>
+                    <button id="descending">Price- High To Low </button>
+
+                    <button id="increasing"> <i class="fa-solid fa-arrow-down-a-z"></i> </button>
+                    <button id="decreasing"> <i class="fa-solid fa-arrow-up-a-z"></i> </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- thematic break -->
+        <hr>
+
+        <div id="products">
+        </div>
+
+    </div>
+
+
+</body>
+
+<script>
+
+    let data = [
+        {
+            name: "Multigrains Atta",
+            price: "291",
+            mPrice: "352",
+            description: "The Tulsi Original-Delicious, fragrant, exquisite, the finest Rama, Krishna and Vana Tulsi leaves are expertly blended to create a soothing, uplifting, full-bodied beverage that is inspiringly fresh and flavorful. Tulsi, encourages tranquillity, clarity, relief from stress, robust immunity and stamina. With its fresh taste and an astonishing array of health benefits, The Tulsi Original is, quite simply... Perfect.",
+            img: "https://www.bigbasket.com/media/uploads/p/m/284420_10-aashirvaad-multigrains-atta.jpg",
+        },
+        {
+            name: "Sugar/Sakhar-Refined",
+            price: "56.66",
+            mPrice: "65",
+            description: "Pepsi brings Pepsi Black - a zero-calorie cola with maximum taste. It's a soft drink that goes well with your diet plan, without disrupting it. So don't think about those extra calories. If you're thirsty, grab a Pepsi Black and drink without worry or any hassle. ",
+            img: "https://www.bigbasket.com/media/uploads/p/m/244096_6-madhur-sugar-refined.jpg",
+        },
+        {
+            name: "Basmati Rice",
+            price: "345",
+            mPrice: "486",
+            description: "If you're looking for something refreshing and healthy, look no more. Storia coconut water is 100% natural and contains no added sugar or flavour. It is hygienically packed with advanced technology ensuring minimum loss of nutrients and shelf life of 9 months. Take a sip and you'll know it is, With Love, from Nature.",
+            img: "https://www.bigbasket.com/media/uploads/p/m/40075197_4-daawat-basmati-rice-rozana-super-90.jpg",
+        },
+        {
+            name: "Sunflower Refined Oil",
+            price: "125.53",
+            description: "To take your coffee experiences to the next level, Nescafe, the world's favourite instant coffee brand, brings forth a rich and aromatic coffee in the form of Nescafe Classic. The unmistakable flavour of Nescafe Classic is what makes this signature coffee so loved all over the world. Start your day right with the first sip of this classic 100% pure coffee and let the intense taste and wonderfully refreshing aroma of Nescafe instant coffee awaken your senses to new opportunities. With over 75 years of experience and working with coffee farmers, to help them grow more sustainable coffee through improved crop",
+            img: "https://www.bigbasket.com/media/uploads/p/m/274145_14-fortune-sun-lite-sunflower-refined-oil.jpg",
+        },
+        {
+            name: "Atta - Whole Wheat",
+            price: "476.5",
+            mPrice: "551",
+            description: "Happiness is all about creating Real Magic from everyday moments spent together with family or friends. Turn up the energy during an afternoon lull, sweltering heat and long exhausting days with the crisp, delicious taste of Coca-Cola Original that is uplifting till the last sip. Make meals tastier with Coke, be it peri-peri or extra cheese. Every slice of pizza is made yummier with a Coke. Enjoy this soft drink ice-cold for maximum refreshment and add magic to your family meals because there’s magic when we eat together. ",
+            img: "https://www.bigbasket.com/media/uploads/p/m/126906_8-aashirvaad-atta-whole-wheat.jpg",
+        },
+        {
+            name: "Toor/Arhar Dal",
+            price: "97",
+            mPrice: "98",
+            description: "Unleash the thunder when you're on the go with a can of toofani in your hand. Whether you're grabbing a bite or are in need of a strong cold drink as you travel, this strong cola is sure to refuel you on almost any mundane day. Thumbs Up is among the largest-selling soft drinks in the country and has been a favourite among adventure-inclined youngsters for several decades.",
+            img: "https://www.bigbasket.com/media/uploads/p/m/10000444_10-bb-royal-toor-dalarhar-dal-desi.jpg",
+        },
+        {
+            name: "Sharbati-Atta",
+            price: "510.24",
+            mPrice: "650",
+            description: "Bisleri is one of the most popular brands for bottled water. Bisleri follows a six-step stringent purification process which means that the water from Bisleri is pure and absolutely good for your health. Even the bottles where the water is stored are made in Bisleri plants as well to avoid contamination. A bottle of Bisleri water contains calcium, chlorides, magnesium and TDS; all of which are absolutely essential for healthy well-being. Quench your thirst with this bottled water and it will go down real smooth. Water like food sustains life and the promise of bisleri is all you need.",
+            img: "https://www.bigbasket.com/media/uploads/p/m/40189429_4-bb-royal-superior-mp-sharbati-atta-fortified.jpg",
+        },
+        {
+            name: "Peanuts/Shengdana - Raw",
+            price: "42",
+            mPrice: "50",
+            description: "Brooke Bond Red Label is one of India’s largest selling packaged tea brands. Brooke Bond Red Label Tea is a blend Red Label Natural Care is clinically proven to enhance immunity and help you fall ill less often.",
+            img: "https://www.bigbasket.com/media/uploads/p/m/30000120_14-bb-royal-peanutsmungaphalishengdana-raw.jpg",
+        },
+        {
+            name: "Pure Ghee",
+            price: "598",
+            mPrice: "640",
+            description: "Kinley sparkling water is the go-to choice. Launched in 2002, the bubbly zing of Kinley soda makes a perfect mixer for your mocktails ! This Coca-Cola product goes through an intensive 10 Step filtration method before reaching you. The consistency and purity of the carbonated water is maintained using various procedures. Also containing added minerals, Kinley sparkling water is the one to reckon with.",
+            img: "https://www.bigbasket.com/media/uploads/p/m/1214162_1-amul-pure-ghee.jpg",
+        },
+        {
+            name: "Salt - Iodised",
+            price: "22.4",
+            description: "Mirinda's great orangy taste and sparkling bubbles encourage you to be carefree, spontaneous and playful. With no artificial flavour, a sip of Mirinda, with its bold taste, will switch on the pagalpanti in you. No artificial Flavouring. Contains no fruit.",
+            img: "https://www.bigbasket.com/media/uploads/p/m/236834_6-aashirvaad-salt-iodised.jpg"
+        },
+        {
+            name: "Unpolished Moong Dal",
+            price: "153",
+            mPrice: "204",
+            description: "The Pomegranate is super nutrition-dense which makes it an extremely healthy fruit offering in form of a pomegranate beverage. The super fruit is known to deliver health in every meal.",
+            img: "https://www.bigbasket.com/media/uploads/p/m/30002287_8-tata-sampann-unpolished-moong-dal.jpg",
+        },
+        {
+            name: "Sunflower Oil- Fortified",
+            price: "615",
+            mPrice: "730",
+            description: "Bru Gold Premium Freeze Dried Intense Aromatic Instant Coffee is the perfect way to start your day in the best possible way. BRU Instant Coffee was India’s first coffee-chicory mix instant coffee. Since then we've been capturing people's hearts and kitchens with everyone's favourite coffee. Bru Gold Premium Freeze Dried Intense Aromatic Instant Coffee is granulated coffee that is 100% pure and rich in taste and aroma. Bru Gold Premium Coffee is made from freeze-dried aromatic beans to bring you a superior taste",
+            img: "https://www.bigbasket.com/media/uploads/p/m/274148_14-fortune-sun-lite-sunflower-refined-oil.jpg",
+        },
+
+        {
+            name: "Wada Kolam Rice/Tandul ",
+            price: "89",
+            description: "Alpha 8 Pineapple + Nata De Coco is the perfect chilled drink to relieve you from the summer heat! The Alpha 8 Pineapple + Nata De Coco contains zero fat. It is ready to serve beverage that tastes its best when it's served chilled. This contains the sweet flavour of pineapple with a twist in texture. Nata de coco cubes are translucent jelly-like substances made from coconuts.",
+            img: "https://www.bigbasket.com/media/uploads/p/m/30010355_2-bb-royal-wada-kolam-rice.jpg"
+        },
+        {
+            name: "Basmati Rice",
+            price: "477.63",
+            description: "FRESHLY ROASTED COFFEE: Discover the rich taste of the finest authentic coffee with delicate organic flavour from South India. Beans with balanced acidity are traditionally plucked before roasting & grounding. Turbocharge your day with black coffee or milk coffee from Auric.",
+            img: "https://www.bigbasket.com/media/uploads/p/m/204005_7-daawat-basmati-rice-rozana-gold.jpg"
+        },
+        {
+            name: "Active- Pro Weight Watchers",
+            price: "340.5",
+            mPrice: "480",
+            description: "As you age, you may frequently feel weak & tired due to loss of muscle mass. Ensure Complete, balanced nutrition can help support bone & muscle strength to help you stay strong and active. New Ensure is the only complete, balanced supplement now with HMB to help build and protect muscles.",
+            img: "https://www.bigbasket.com/media/uploads/p/m/1203530_3-saffola-active-pro-weight-watchers.jpg"
+        }
+
+    ];
+
+    var parent = document.querySelector("#products");
+
+    function showProducts(data) {
+
+        data.forEach(product => {
+
+            var div = document.createElement("div");
+
+            var img = document.createElement("img");
+            img.src = product.img;
+
+            var name = document.createElement("h6");
+            name.innerText = product.name;
+
+            var priceContainer = document.createElement("div");
+            priceContainer.classList.add("price-container");
+
+            var price = document.createElement("h3");
+            price.textContent = "₹" + product.price;
+            priceContainer.append(price);
+
+            var add_to_cart = document.createElement("button");
+            add_to_cart.innerText = "Add";
+
+            add_to_cart.onclick = function (event) {
+
+                event.stopPropagation(); //stops redirection to productdetailsPage
+                addToCart(product);
+            }
+
+            if (product.mPrice !== undefined) {
+                var mPrice = document.createElement("s");
+                mPrice.classList.add("original-price");
+                mPrice.textContent = "₹" + product.mPrice;
+                priceContainer.append(mPrice);
+            }
+
+            div.append(img, name, priceContainer, add_to_cart);
+
+            parent.append(div);
+        });
+    }
+
+    showProducts(data);
+
+    var cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function addToCart(product) {
+
+        cart.push(product)
+
+        localStorage.setItem("cart", JSON.stringify(cart))
+        console.log(cart);
+    }
+
+    document.getElementById("ascending").addEventListener("click", function () {
+        // products array in ascending order
+        data.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        parent.innerHTML = "";
+        showProducts(data);
+    });
+
+    document.getElementById("descending").addEventListener("click", function () {
+        // products array in descending order 
+        data.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        parent.innerHTML = "";
+        showProducts(data);
+    });
+
+    document.getElementById("increasing").addEventListener("click", function () {
+
+        data.sort((a, b) => a.name.localeCompare(b.name));
+        parent.innerHTML = "";
+        showProducts(data);
+    })
+
+    document.getElementById("decreasing").addEventListener("click", function () {
+
+        data.sort((a, b) => b.name.localeCompare(a.name));
+        parent.innerHTML = "";
+        showProducts(data);
+    })
+
+    var productElements = document.querySelectorAll("#products > div");
+
+    console.log(productElements)
+
+    productElements.forEach((productElements, index) => {
+        productElements.addEventListener("click", () => {
+            // Get the corresponding product from the data array
+            var product = data[index];
+
+            // Store the selected product data in session storage
+            sessionStorage.setItem("selectedProduct", JSON.stringify(product));
+
+            // Redirect to the product details page
+            window.location.href = "product_detail.html";
+        });
+
+    });
+
+</script>
+
+<!-- for carousel made on screen -->
+<script>
+
+    var slideIndex = 0;
+
+    function carousel() {
+
+        var x = document.getElementsByClassName("mySlides");
+        for (var i = 0; i < x.length; i++) {
+
+            x[i].style.display = "none";
+        }
+
+        slideIndex++;
+        if (slideIndex > x.length) { slideIndex = 1 }
+        x[slideIndex - 1].style.display = "block";
+        setTimeout(carousel, 1500);
+    }
+    carousel();
+</script>
+
+</html>
