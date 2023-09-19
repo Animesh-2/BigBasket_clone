@@ -58,5 +58,13 @@ The page appears to have navigation elements, search functionality, product list
 
 # Login/ Signup Page
 
-![Alt text](signupPage.png.jpeg)
+![Image](signupPage.png.jpeg)
+
+# Cart Page
+
+![Image](<Screenshot (64).png>)
+
+# Product Page
+
+![Image](<Screenshot (65).png>)
 
