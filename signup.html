@@ -63,7 +63,7 @@
         }
 
         #left{
-            /* background-color: rgb(176, 24, 24); */
+            background-color: rgb(240, 240, 240);
             color: grey;
             /* margin: auto; */
             /* border: 1px solid rgb(20, 14, 190); */
@@ -79,20 +79,34 @@
                 gap: 20px;
         }
         img{
+            border: 1px solid gray;
+            padding: 5px;
             width: 20px;
             height: 20px;
+            border-radius: 5px;
+        }
+        #logos{
+            width: 170px;
+            height: 170px;
+            margin: auto;
+            border: none;
+            padding: 0px;
         }
         #centerPart{
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
-            padding: 10%;
-            gap: 20px;
+           /* padding: 10%; */
+            margin: auto;
+            padding-top: 20px;
+          
         }
 
         #lowerPart{
             display: flex;
-            padding-left: 10px;
-            padding-right: 10px;
+            align-items: center;
+            align-content: center;
+            padding-left:0px;
+            /* padding-right: 10px; */
+            padding-bottom: 20px;
+            margin: auto;
             gap: 5%;
             position: relative;
         }
@@ -126,30 +140,36 @@
         text-align: left;
         margin-bottom: 2px;
        }
+       .leftLowerPara{
+       font-weight: 100;
+       }
+
+       @media screen {
+        
+        
+       }
 
 
     </style>
 </head>
 <body>
 
-    <button id="enterform" onclick="openform()">login</button>
+    <!-- <button id="enterform" onclick="openform()">login</button> -->
 
     <div id="parent">
             
         <div id="left">
-           <P>Why choose Bigbasket?</P>
+          
            <div id="centerPart">
-            <div><img src="https://dummyimage.com/150x150/000/fff" alt=""></div>
-            <div><img src="https://dummyimage.com/150x150/000/fff" alt=""></div>
-            <div><img src="https://dummyimage.com/150x150/000/fff" alt=""></div>
-            <div><img src="https://dummyimage.com/150x150/000/fff" alt=""></div>
+            <img id="logos" src="https://i.pinimg.com/750x/46/3c/d4/463cd450a22064282e054785fb5a1b4b.jpg" alt="">
+            
           
            </div>
            <hr>
-           <div id="lowerPart">Find us on
+           <div id="lowerPart"><p class="leftLowerPara">Find us on</p>
 
-            <img src="https://www.freepnglogos.com/uploads/google-play-png-logo/google-play-arrow-png-logo-8.png" alt="">
-            <img src="https://icon2.cleanpng.com/20171220/req/apple-logo-png-5a3a2721ef5432.80160087151376054598035602.jpg" alt="">
+            <img id="playstoreImg" src="https://www.freepnglogos.com/uploads/google-play-png-logo/google-play-arrow-png-logo-8.png" alt="">
+            <img id="appleStoreImg" src="https://icon2.cleanpng.com/20171220/req/apple-logo-png-5a3a2721ef5432.80160087151376054598035602.jpg" alt="">
            
         </div>
            
