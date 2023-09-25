@@ -68,5 +68,5 @@ The page appears to have navigation elements, search functionality, product list
 ![Image](<Screenshot (65).png>)
 
 # Deployment Link
-[Bigbasket_clone](https://650af7ea636e3d60951f8a4e--timely-haupia-9e0346.netlify.app/)
+[Bigbasket_clone](https://timely-haupia-9e0346.netlify.app/)
 
