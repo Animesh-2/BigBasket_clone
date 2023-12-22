@@ -1,4 +1,4 @@
-# Bigbasket cloning
+# BigBasket cloning
 
 Using HTML, CSS & JavaScript this cloning of bigbasket is made, tried to add some different look for the website from the original one.
 
